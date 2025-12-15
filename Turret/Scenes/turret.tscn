@@ -1,0 +1,116 @@
+[gd_scene load_steps=14 format=3 uid="uid://6kap25li4jd"]
+
+[ext_resource type="Script" uid="uid://ce2jfkt73xovq" path="res://Turret/Scripts/turret.gd" id="1_5s8j8"]
+
+[sub_resource type="Gradient" id="Gradient_5s8j8"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_of7hb"]
+gradient = SubResource("Gradient_5s8j8")
+
+[sub_resource type="Gradient" id="Gradient_s7twe"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.50140655, 0.5014065, 0.5014065, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_15lew"]
+gradient = SubResource("Gradient_s7twe")
+
+[sub_resource type="Gradient" id="Gradient_cqkdy"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.3822784, 0.0018636227, 0.7262747, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5s8j8"]
+gradient = SubResource("Gradient_cqkdy")
+
+[sub_resource type="Gradient" id="Gradient_of7hb"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_s7twe"]
+gradient = SubResource("Gradient_of7hb")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqkdy"]
+size = Vector2(742, 300)
+
+[sub_resource type="Animation" id="Animation_5s8j8"]
+resource_name = "Idle"
+length = 4.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turret Head:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -3.141592653589793, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_of7hb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turret Head:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s7twe"]
+_data = {
+&"Idle": SubResource("Animation_5s8j8"),
+&"RESET": SubResource("Animation_of7hb")
+}
+
+[node name="Turret" type="Node2D"]
+script = ExtResource("1_5s8j8")
+
+[node name="Turret Base" type="Sprite2D" parent="."]
+position = Vector2(0, -1.5000004)
+scale = Vector2(0.1171875, 2.9999988)
+texture = SubResource("GradientTexture1D_of7hb")
+
+[node name="Turret Neck" type="Sprite2D" parent="."]
+position = Vector2(0, -21.5)
+scale = Vector2(0.031249998, 37)
+texture = SubResource("GradientTexture1D_15lew")
+
+[node name="Turret Head" type="Sprite2D" parent="."]
+position = Vector2(0, -41.000004)
+scale = Vector2(0.0859375, 20.000004)
+texture = SubResource("GradientTexture1D_5s8j8")
+
+[node name="Turret Muzzle 1" type="Sprite2D" parent="Turret Head"]
+position = Vector2(232.72728, 2.3841858e-07)
+scale = Vector2(0.8181817, 0.1999999)
+texture = SubResource("GradientTexture1D_s7twe")
+
+[node name="Projectile Spawn Location" type="Marker2D" parent="Turret Head/Turret Muzzle 1"]
+position = Vector2(142.22223, 0)
+scale = Vector2(2.6666667, 0.046875015)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -1)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -150)
+shape = SubResource("RectangleShape2D_cqkdy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_s7twe")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
