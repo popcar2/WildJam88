@@ -39,5 +39,7 @@ func handle_transitions():
 	if player.is_on_floor():
 		if player.get_input_axis():
 			state_bot.switch_to_state("Walking")
+			player.play_landing_animation()
 		else:
 			state_bot.switch_to_state("Idle")
+			player.play_landing_animation()

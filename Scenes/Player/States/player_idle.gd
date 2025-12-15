@@ -32,6 +32,5 @@ func handle_transitions():
 	elif player.get_input_axis():
 		state_bot.switch_to_state("Walking")
 	elif InputBuffer.is_action_buffered("jump"):
-		InputBuffer.invalidate_buffer_action("jump")
-		player.velocity.y = player.JUMP_VELOCITY
+		player.jump()
 		state_bot.switch_to_state("Airborne")

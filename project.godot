@@ -56,6 +56,11 @@ jump={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Environment"
+2d_physics/layer_2="Player"
+
 [physics]
 
 common/physics_interpolation=true

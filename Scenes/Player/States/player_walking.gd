@@ -29,7 +29,6 @@ func handle_movement(delta: float):
 	var input_axis: float = player.get_input_axis()
 	
 	player.velocity.x = move_toward(player.velocity.x, input_axis * player.MAX_MOVE_SPEED, player.ACCELERATION * delta)
-	
 
 
 func handle_transitions():
@@ -38,6 +37,5 @@ func handle_transitions():
 	elif player.velocity.x == 0 and not player.get_input_axis():
 		state_bot.switch_to_state("Idle")
 	elif InputBuffer.is_action_buffered("jump"):
-		InputBuffer.invalidate_buffer_action("jump")
-		player.velocity.y = player.JUMP_VELOCITY
+		player.jump()
 		state_bot.switch_to_state("Airborne")
