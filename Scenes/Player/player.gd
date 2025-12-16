@@ -5,6 +5,8 @@ const MAX_MOVE_SPEED: float = 1000
 const ACCELERATION: float = 500
 const JUMP_VELOCITY: float = -700
 
+@export var hp: int = 3
+
 var tween: Tween
 
 func get_input_axis() -> float:
@@ -23,6 +25,10 @@ func jump() -> void:
 	InputBuffer.invalidate_buffer_action("jump")
 	play_jump_animation()
 	velocity.y = JUMP_VELOCITY
+
+func take_damage() -> void:
+	hp -= 1
+	play_damage_effect()
 
 # ----- TWEEN ANIMATIONS -----
 
@@ -45,6 +51,11 @@ func play_landing_animation():
 	tween.chain()
 	tween.tween_property(%AnimatedSprite2D, "scale:y", 1, 0.15)
 	tween.tween_property(%AnimatedSprite2D, "scale:x", 1, 0.15)
+
+func play_damage_effect():
+	var color_tween: Tween = create_tween()
+	color_tween.tween_property(%AnimatedSprite2D, "self_modulate", Color(0.8, 0, 0), 0.1)
+	color_tween.tween_property(%AnimatedSprite2D, "self_modulate", Color(1, 1, 1), 0.1)
 
 func reset_tween():
 	if tween:
