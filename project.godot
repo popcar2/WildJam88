@@ -36,6 +36,10 @@ folder_colors={
 "res://Scenes/Player/Art/": "green"
 }
 
+[global_group]
+
+hazards="Lose 1 hp upon touching this"
+
 [input]
 
 move_left={
