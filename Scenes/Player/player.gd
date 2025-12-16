@@ -30,6 +30,12 @@ func take_damage() -> void:
 	hp -= 1
 	play_damage_effect()
 
+func _physics_process(delta: float) -> void:
+	for i in get_slide_collision_count():
+		var body = get_slide_collision(i)
+		if body.get_collider().is_in_group("hazard"):
+			take_damage()
+
 # ----- TWEEN ANIMATIONS -----
 
 func play_jump_animation():
