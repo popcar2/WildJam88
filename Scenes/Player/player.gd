@@ -33,7 +33,7 @@ func take_damage() -> void:
 func _physics_process(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var body = get_slide_collision(i)
-		if body.get_collider().is_in_group("hazard"):
+		if body.get_collider().is_in_group("hazards"):
 			take_damage()
 
 # ----- TWEEN ANIMATIONS -----
