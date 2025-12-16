@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://djsvouwiqvkdx"]
+[gd_scene load_steps=11 format=4 uid="uid://djsvouwiqvkdx"]
 
 [ext_resource type="Texture2D" uid="uid://dfwb7ar5k7cwe" path="res://Assets/Kenny's Platformer Assets/Spritesheets/spritesheet-tiles-default.png" id="1_1uhi8"]
 [ext_resource type="PackedScene" uid="uid://c4s3fycysvqsi" path="res://Scenes/player.tscn" id="2_p1lip"]
+[ext_resource type="Texture2D" uid="uid://cynsjaa4kwuxy" path="res://Assets/Kenny's Platformer Assets/saw.png" id="3_p1lip"]
+[ext_resource type="Script" uid="uid://datuerybqbhjw" path="res://Scenes/Hazards/hazards.gd" id="3_p730j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo1nx"]
 texture = ExtResource("1_1uhi8")
@@ -593,6 +595,8 @@ func _on_body_entered(body: Node) -> void:
 		body.take_damage()
 "
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1uhi8"]
+
 [node name="MainScene" type="Node2D"]
 
 [node name="FloorLayer" type="TileMapLayer" parent="."]
@@ -611,3 +615,20 @@ position = Vector2(1, -149)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.6, 0.6)
 process_callback = 0
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-201, -196)
+collision_mask = 2
+script = ExtResource("3_p730j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(3.5, 3.5)
+shape = SubResource("CircleShape2D_1uhi8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("3_p1lip")
+
+[node name="PointA" type="Node2D" parent="Area2D"]
+
+[node name="PointB" type="Node2D" parent="Area2D"]
+position = Vector2(-303, 0)
