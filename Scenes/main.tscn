@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://dk7oat6yll2ro"]
+[gd_scene load_steps=8 format=4 uid="uid://dk7oat6yll2ro"]
 
 [ext_resource type="Texture2D" uid="uid://dfwb7ar5k7cwe" path="res://Assets/Kenny's Platformer Assets/Spritesheets/spritesheet-tiles-default.png" id="1_8gbba"]
-[ext_resource type="PackedScene" uid="uid://c4s3fycysvqsi" path="res://Scenes/player.tscn" id="2_8gbba"]
+[ext_resource type="PackedScene" uid="uid://c4s3fycysvqsi" path="res://Scenes/Player/player.tscn" id="2_8gbba"]
+[ext_resource type="PackedScene" uid="uid://6kap25li4jd" path="res://Scenes/Turret/turret.tscn" id="3_8gbba"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo1nx"]
 texture = ExtResource("1_8gbba")
@@ -600,3 +601,6 @@ position = Vector2(1, -149)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.6, 0.6)
 process_callback = 0
+
+[node name="Turret" parent="." instance=ExtResource("3_8gbba")]
+position = Vector2(726, -63)

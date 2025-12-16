@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://1nyvrrqbu24v"]
 
-[ext_resource type="Script" uid="uid://wflr5eho8a17" path="res://Projectile/Scripts/projectile.gd" id="1_sdw3x"]
+[ext_resource type="Script" uid="uid://wflr5eho8a17" path="res://Scenes/Projectile/projectile.gd" id="1_helqj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0lri8"]
 radius = 15.0
@@ -25,8 +25,8 @@ scale_max = 3.0
 color_initial_ramp = SubResource("GradientTexture1D_sdw3x")
 
 [node name="Projectile" type="Area2D"]
-collision_mask = 2
-script = ExtResource("1_sdw3x")
+collision_mask = 3
+script = ExtResource("1_helqj")
 speed = 1000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

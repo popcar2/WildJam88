@@ -3,9 +3,6 @@ class_name Projectile
 
 @export var speed : float
 
-func _ready() -> void:
-	print("Projectile Instatiated")
-
 func _process(delta: float) -> void:
 	move_local_x(speed * delta)
 
@@ -13,6 +10,8 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		body.take_damage()
+		queue_free()
+	if body is TileMapLayer:
 		queue_free()
 
 

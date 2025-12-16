@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://6kap25li4jd"]
 
-[ext_resource type="Script" uid="uid://ce2jfkt73xovq" path="res://Turret/Scripts/turret.gd" id="1_5s8j8"]
+[ext_resource type="Script" uid="uid://ce2jfkt73xovq" path="res://Scenes/Turret/turret.gd" id="1_5s8j8"]
 
 [sub_resource type="Gradient" id="Gradient_s7twe"]
 offsets = PackedFloat32Array(1)
