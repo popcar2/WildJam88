@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://1nyvrrqbu24v"]
+
+[ext_resource type="Script" uid="uid://wflr5eho8a17" path="res://Projectile/Scripts/projectile.gd" id="1_sdw3x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0lri8"]
+radius = 15.0
+
+[sub_resource type="Gradient" id="Gradient_0lri8"]
+colors = PackedColorArray(0.8509804, 0.16078432, 0, 1, 1, 0.5372549, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sdw3x"]
+gradient = SubResource("Gradient_0lri8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0lri8"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(20, 20, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 99.99999
+linear_accel_max = 99.99999
+scale_min = 2.0
+scale_max = 3.0
+color_initial_ramp = SubResource("GradientTexture1D_sdw3x")
+
+[node name="Projectile" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_sdw3x")
+speed = 1000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0lri8")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 1000
+lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_0lri8")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
