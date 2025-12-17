@@ -4,12 +4,18 @@ extends SimpleState
 @onready var player: Player = state_bot.puppet
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
 
+var tween: Tween
+
 func _enter_state(_last_state: SimpleState) -> void:
 	%AnimatedSprite2D.play("walk")
+	play_walk_animation()
 
 
 func _exit_state(_new_state: SimpleState) -> void:
-	pass
+	if tween:
+		tween.kill()
+	
+	%AnimatedSprite2D.scale = Vector2(1, 1)
 
 
 func _state_process(_delta: float) -> void:
@@ -39,3 +45,21 @@ func handle_transitions():
 	elif InputBuffer.is_action_buffered("jump"):
 		player.jump()
 		state_bot.switch_to_state("Airborne")
+
+func play_walk_animation():
+	reset_tween()
+	tween.set_loops()
+	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(%AnimatedSprite2D, "scale:y", 0.95, 0.2)
+	tween.tween_property(%AnimatedSprite2D, "scale:x", 1.1, 0.2)
+	
+	tween.chain()
+	tween.tween_property(%AnimatedSprite2D, "scale:y", 1, 0.15)
+	tween.tween_property(%AnimatedSprite2D, "scale:x", 1, 0.15)
+
+func reset_tween():
+	if tween:
+		tween.kill()
+	
+	tween = create_tween()
+	tween.set_parallel()
