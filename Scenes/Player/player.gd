@@ -7,6 +7,9 @@ const JUMP_VELOCITY: float = -700
 
 @export var hp: int = 3
 
+@onready var damagable_reset_timer = $"Damagable Reset Timer"
+@onready var animation_player = $SpriteOffset/AnimationPlayer
+var is_damagable: bool = true
 var tween: Tween
 
 func _physics_process(delta: float) -> void:
@@ -35,8 +38,13 @@ func jump() -> void:
 	velocity.y = JUMP_VELOCITY
 
 func take_damage() -> void:
+	if !is_damagable:
+		return
 	hp -= 1
 	play_damage_effect()
+	is_damagable = false
+	animation_player.play("Damage_CoolDown_Animation")
+	damagable_reset_timer.start()
 
 # ----- TWEEN ANIMATIONS -----
 
@@ -79,3 +87,8 @@ func reset_tween():
 	
 	tween = create_tween()
 	tween.set_parallel()
+
+func _on_damagable_reset_timer_timeout() -> void:
+	is_damagable = true
+	animation_player.stop()
+	damagable_reset_timer.stop()
