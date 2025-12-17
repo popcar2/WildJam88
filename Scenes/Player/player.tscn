@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c4s3fycysvqsi"]
+[gd_scene load_steps=14 format=3 uid="uid://c4s3fycysvqsi"]
 
 [ext_resource type="Script" uid="uid://b1vgic4qg8xy7" path="res://Scenes/Player/player.gd" id="1_6t5aa"]
 [ext_resource type="Script" uid="uid://dyiqd8bnrrpd8" path="res://addons/state_bot/state_bot.gd" id="1_v0iea"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://co2lppatcooi7" path="res://Scenes/Player/Art/player_walk_1.png" id="4_gk6dx"]
 [ext_resource type="Script" uid="uid://d0fkpt6geevhq" path="res://Scenes/Player/States/player_walking.gd" id="4_vgqql"]
 [ext_resource type="Script" uid="uid://d3i3p1s22ybk4" path="res://Scenes/Player/States/player_airborne.gd" id="5_fkybt"]
+[ext_resource type="Script" uid="uid://diwuetymi1gdv" path="res://Scenes/Player/States/player_dash.gd" id="10_jhyir"]
+[ext_resource type="Script" uid="uid://8qn6cvcnbpck" path="res://Scenes/Player/States/player_bounce.gd" id="11_74mp2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f60y1"]
 animations = [{
@@ -80,3 +82,10 @@ script = ExtResource("4_vgqql")
 
 [node name="Airborne" type="Node" parent="StateBot"]
 script = ExtResource("5_fkybt")
+
+[node name="Dash" type="Node" parent="StateBot" node_paths=PackedStringArray("next_state")]
+script = ExtResource("10_jhyir")
+next_state = NodePath("Bounce")
+
+[node name="Bounce" type="Node" parent="StateBot/Dash"]
+script = ExtResource("11_74mp2")
