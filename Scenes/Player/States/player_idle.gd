@@ -5,7 +5,7 @@ extends SimpleState
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
 
 func _enter_state(_last_state: SimpleState) -> void:
-	pass
+	%AnimatedSprite2D.play("idle")
 
 
 func _exit_state(_new_state: SimpleState) -> void:

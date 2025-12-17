@@ -1,20 +1,39 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4s3fycysvqsi"]
+[gd_scene load_steps=12 format=3 uid="uid://c4s3fycysvqsi"]
 
 [ext_resource type="Script" uid="uid://b1vgic4qg8xy7" path="res://Scenes/Player/player.gd" id="1_6t5aa"]
 [ext_resource type="Script" uid="uid://dyiqd8bnrrpd8" path="res://addons/state_bot/state_bot.gd" id="1_v0iea"]
-[ext_resource type="Texture2D" uid="uid://ndpb0hqbrawc" path="res://Scenes/Player/Art/temp3.png" id="2_3smsa"]
 [ext_resource type="Script" uid="uid://bna63502mea03" path="res://Scenes/Player/States/player_idle.gd" id="2_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://3aby5qqn13k0" path="res://Scenes/Player/Art/player_idle.png" id="2_dd0ac"]
+[ext_resource type="Texture2D" uid="uid://d4ahxyr2v81lx" path="res://Scenes/Player/Art/player_tail.png" id="3_0u5uq"]
+[ext_resource type="Texture2D" uid="uid://cbkc1gk7s5q11" path="res://Scenes/Player/Art/player_jump.png" id="3_jlvik"]
+[ext_resource type="Texture2D" uid="uid://co2lppatcooi7" path="res://Scenes/Player/Art/player_walk_1.png" id="4_gk6dx"]
 [ext_resource type="Script" uid="uid://d0fkpt6geevhq" path="res://Scenes/Player/States/player_walking.gd" id="4_vgqql"]
-[ext_resource type="Script" uid="uid://d3i3p1s22ybk4" path="res://Scenes/Player/States/player_airborne.tres.gd" id="5_fkybt"]
+[ext_resource type="Script" uid="uid://d3i3p1s22ybk4" path="res://Scenes/Player/States/player_airborne.gd" id="5_fkybt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f60y1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_3smsa")
+"texture": ExtResource("2_dd0ac")
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jlvik")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_gk6dx")
+}],
+"loop": true,
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -26,12 +45,23 @@ height = 90.0
 collision_layer = 2
 script = ExtResource("1_6t5aa")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="SpriteOffset" type="Node2D" parent="."]
+scale = Vector2(0.45, 0.45)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteOffset"]
 unique_name_in_owner = true
-position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_f60y1")
-animation = &"idle"
+animation = &"walk"
 autoplay = "idle"
+
+[node name="TailSprite" type="Sprite2D" parent="SpriteOffset/AnimatedSprite2D"]
+unique_name_in_owner = true
+show_behind_parent = true
+position = Vector2(-55.555553, 96.66667)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_0u5uq")
+centered = false
+offset = Vector2(-233, -100)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_v0iea")
