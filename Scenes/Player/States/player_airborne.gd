@@ -4,8 +4,11 @@ extends SimpleState
 @onready var player: Player = state_bot.puppet
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
 
+var is_jump_released: float
+
 func _enter_state(_last_state: SimpleState) -> void:
 	%AnimatedSprite2D.play("jump")
+	is_jump_released = false
 
 
 func _exit_state(_new_state: SimpleState) -> void:
@@ -26,8 +29,9 @@ func _state_physics_process(delta: float) -> void:
 
 
 func handle_movement(delta: float):
-	if Input.is_action_just_released("jump") and player.velocity.y < 0:
+	if not is_jump_released and not Input.is_action_pressed("jump") and player.velocity.y < 0:
 		player.velocity.y /= 2
+		is_jump_released = true
 	
 	var input_axis: float = player.get_input_axis()
 	
