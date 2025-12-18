@@ -50,8 +50,8 @@ func play_walk_animation():
 	reset_tween()
 	tween.set_loops()
 	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	tween.tween_property(%AnimatedSprite2D, "scale:y", 0.95, 0.2)
-	tween.tween_property(%AnimatedSprite2D, "scale:x", 1.1, 0.2)
+	tween.tween_property(%AnimatedSprite2D, "scale:y", 0.96, 0.2)
+	tween.tween_property(%AnimatedSprite2D, "scale:x", 1.08, 0.2)
 	
 	tween.chain()
 	tween.tween_property(%AnimatedSprite2D, "scale:y", 1, 0.15)
