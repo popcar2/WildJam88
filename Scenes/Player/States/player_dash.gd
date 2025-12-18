@@ -7,19 +7,20 @@ extends SimpleState
 @export var dash_speed: float = 500
 
 var biggest_velocity: float
+var tween: Tween
 
 func _enter_state(_last_state: SimpleState) -> void:
 	biggest_velocity = 0
 	if player.velocity.y < dash_speed:
 		player.velocity.y = dash_speed
 	
-	var tween: Tween = create_tween()
+	tween = create_tween()
 	tween.set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	tween.tween_property(%AnimatedSprite2D, "rotation_degrees", 95, 0.5)
 
 
 func _exit_state(_new_state: SimpleState) -> void:
-	pass
+	tween.kill()
 
 
 func _state_process(_delta: float) -> void:

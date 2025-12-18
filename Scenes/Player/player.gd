@@ -96,7 +96,6 @@ func reset_tween():
 	
 	tween = create_tween()
 	tween.set_parallel()
-	%AnimatedSprite2D.rotation_degrees = 0
 
 func _on_damagable_reset_timer_timeout() -> void:
 	is_damagable = true
