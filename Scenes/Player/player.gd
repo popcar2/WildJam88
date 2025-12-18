@@ -49,11 +49,24 @@ func take_damage(source: Node2D = null) -> void:
 	animation_player.play("Damage_CoolDown_Animation")
 	damagable_reset_timer.start()
 	
+	# Add knockback
 	if source != null:
 		velocity = knockback_velocity
 		
 		if source.global_position.x > global_position.x:
 			velocity.x *= -1
+	
+	if hp <= 0:
+		die()
+
+func die():
+	var death_tween: Tween = create_tween()
+	death_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC).set_parallel()
+	death_tween.set_ignore_time_scale()
+	death_tween.tween_property(Engine, "time_scale", 0.1, 1)
+	await death_tween.tween_property($Camera2D, "zoom", Vector2(1, 1), 1).finished
+	
+	SceneManager.reset_scene()
 
 # ----- TWEEN ANIMATIONS -----
 

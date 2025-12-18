@@ -94,6 +94,7 @@ height = 90.0
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_6t5aa")
+hp = 1
 
 [node name="SpriteOffset" type="Node2D" parent="."]
 scale = Vector2(0.45, 0.45)
@@ -151,5 +152,9 @@ wait_time = 2.0
 [node name="JumpSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_7g0yx")
 volume_db = -10.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.6, 0.6)
+process_callback = 0
 
 [connection signal="timeout" from="Damagable Reset Timer" to="." method="_on_damagable_reset_timer_timeout"]

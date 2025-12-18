@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 InputBuffer="*res://Scenes/Singletons/input_buffer.gd"
 PauseMenu="*res://Scenes/Singletons/PauseMenu/pause_menu.tscn"
+SceneManager="*res://Scenes/Singletons/SceneManager/SceneManager.tscn"
 
 [display]
 
