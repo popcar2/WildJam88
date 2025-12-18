@@ -33,8 +33,11 @@ func _state_physics_process(delta: float) -> void:
 
 func handle_movement(delta: float):
 	var input_axis: float = player.get_input_axis()
+	var target_acceleration: float = player.ACCELERATION * delta
+	if sign(input_axis) == -sign(player.velocity.x):
+		target_acceleration *= 2
 	
-	player.velocity.x = move_toward(player.velocity.x, input_axis * player.MAX_MOVE_SPEED, player.ACCELERATION * delta)
+	player.velocity.x = move_toward(player.velocity.x, input_axis * player.MAX_MOVE_SPEED, target_acceleration)
 
 
 func handle_transitions():

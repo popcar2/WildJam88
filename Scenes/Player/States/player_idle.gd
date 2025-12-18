@@ -24,7 +24,9 @@ func _state_physics_process(delta: float) -> void:
 	handle_transitions()
 
 func handle_movement(delta: float):
-	player.velocity.x = move_toward(player.velocity.x, 0, player.ACCELERATION * delta)
+	var target_acceleration: float = player.ACCELERATION * 2 * delta
+	
+	player.velocity.x = move_toward(player.velocity.x, 0, target_acceleration)
 
 func handle_transitions():
 	if not player.is_on_floor():
