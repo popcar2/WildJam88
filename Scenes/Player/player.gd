@@ -6,6 +6,7 @@ const ACCELERATION: float = 500
 const JUMP_VELOCITY: float = -700
 
 @export var hp: int = 3
+@export var knockback_velocity: Vector2 = Vector2(500, -450)
 
 @onready var damagable_reset_timer = $"Damagable Reset Timer"
 @onready var animation_player = $SpriteOffset/AnimationPlayer
@@ -36,15 +37,23 @@ func jump() -> void:
 	InputBuffer.invalidate_buffer_action("jump")
 	play_jump_animation()
 	velocity.y = JUMP_VELOCITY
+	$JumpSFX.play()
 
-func take_damage() -> void:
+func take_damage(source: Node2D = null) -> void:
 	if !is_damagable:
 		return
+	
 	hp -= 1
 	play_damage_effect()
 	is_damagable = false
 	animation_player.play("Damage_CoolDown_Animation")
 	damagable_reset_timer.start()
+	
+	if source != null:
+		velocity = knockback_velocity
+		
+		if source.global_position.x > global_position.x:
+			velocity.x *= -1
 
 # ----- TWEEN ANIMATIONS -----
 

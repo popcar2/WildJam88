@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c4s3fycysvqsi"]
+[gd_scene load_steps=20 format=3 uid="uid://c4s3fycysvqsi"]
 
 [ext_resource type="Script" uid="uid://b1vgic4qg8xy7" path="res://Scenes/Player/player.gd" id="1_6t5aa"]
 [ext_resource type="Script" uid="uid://dyiqd8bnrrpd8" path="res://addons/state_bot/state_bot.gd" id="1_v0iea"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cx43vkqusxrjn" path="res://Scenes/Player/Art/walk_3.png" id="6_dey5f"]
 [ext_resource type="Script" uid="uid://diwuetymi1gdv" path="res://Scenes/Player/States/player_dash.gd" id="10_jhyir"]
 [ext_resource type="Script" uid="uid://8qn6cvcnbpck" path="res://Scenes/Player/States/player_bounce.gd" id="11_74mp2"]
+[ext_resource type="AudioStream" uid="uid://bpodiwbr4pflw" path="res://Scenes/Player/Sfx/jump.mp3" id="14_7g0yx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f60y1"]
 animations = [{
@@ -49,8 +50,9 @@ animations = [{
 
 [sub_resource type="Animation" id="Animation_74mp2"]
 resource_name = "Damage_CoolDown_Animation"
-length = 0.5
+length = 0.3
 loop_mode = 1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -58,10 +60,10 @@ tracks/0/path = NodePath("SpriteOffset:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.26666668, 0.5),
+"times": PackedFloat32Array(0, 0.15, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.3137255), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.078431375), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_oikmp"]
@@ -145,5 +147,9 @@ script = ExtResource("11_74mp2")
 
 [node name="Damagable Reset Timer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="JumpSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_7g0yx")
+volume_db = -10.0
 
 [connection signal="timeout" from="Damagable Reset Timer" to="." method="_on_damagable_reset_timer_timeout"]

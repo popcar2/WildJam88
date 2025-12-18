@@ -9,7 +9,7 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		body.take_damage()
+		body.take_damage(self)
 		queue_free()
 	if body is TileMapLayer:
 		queue_free()
