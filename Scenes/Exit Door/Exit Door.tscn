@@ -1,23 +1,25 @@
 [gd_scene load_steps=4 format=3 uid="uid://d3h5ciwqufnoh"]
 
 [ext_resource type="Script" uid="uid://dk3q1psq7yo2d" path="res://Scenes/Exit Door/Exit Door.gd" id="1_5nwc5"]
-[ext_resource type="PackedScene" uid="uid://c4s3fycysvqsi" path="res://Scenes/Player/player.tscn" id="1_icujy"]
+[ext_resource type="Texture2D" uid="uid://ci43clr26wvvx" path="res://Scenes/Exit Door/door.png" id="2_5nwc5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5nwc5"]
-size = Vector2(76, 116.5)
+size = Vector2(118, 127.5)
 
 [node name="ExitDoor" type="Area2D"]
 script = ExtResource("1_5nwc5")
 
+[node name="Door Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -63.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_5nwc5")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -58.75)
+position = Vector2(0, -64.25)
 shape = SubResource("RectangleShape2D_5nwc5")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
-
-[node name="Player" parent="." instance=ExtResource("1_icujy")]
-position = Vector2(212, -59)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
