@@ -14,13 +14,10 @@ func _enter_state(last_state: SimpleState) -> void:
 	player.play_jump_animation()
 	player.velocity.y = clampf(-(previous_velocity * 1.2), soft_max_bounce_height, 0)
 	
-	print("Previous: ", previous_velocity)
 	# Breaks the soft max bounce height on really high jumps
 	if previous_velocity > 1000:
 		var bonus_velocity: float = player.velocity.y - (previous_velocity + 1000)
 		player.velocity.y = clampf(bonus_velocity, max_bounce_height, 0)
-	
-	print(player.velocity.y)
 	
 	tween = create_tween()
 	tween.set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
