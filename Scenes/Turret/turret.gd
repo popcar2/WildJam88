@@ -5,7 +5,7 @@ var projectile_scene = preload("uid://1nyvrrqbu24v")
 @export var cooldown : float
 @onready var anim_player = $AnimationPlayer
 @onready var turret_head = $"Turret Head"
-@onready var projectile_spawn = $"Turret Head/Turret Muzzle 1/Projectile Spawn Location"
+@onready var projectile_spawn = %"Projectile Spawn Location"
 @onready var timer = $Timer
 
 func _ready() -> void:
