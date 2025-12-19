@@ -10,7 +10,9 @@ const JUMP_VELOCITY: float = -700
 
 @onready var damagable_reset_timer = $"Damagable Reset Timer"
 @onready var animation_player = $SpriteOffset/AnimationPlayer
+
 var is_damagable: bool = true
+var finished_initial_bounce: bool = false
 var tween: Tween
 
 func _ready() -> void:

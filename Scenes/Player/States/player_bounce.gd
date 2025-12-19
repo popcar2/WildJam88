@@ -12,12 +12,18 @@ var tween: Tween
 func _enter_state(last_state: SimpleState) -> void:
 	var previous_velocity: float = last_state.biggest_velocity - 100
 	player.play_jump_animation()
-	player.velocity.y = clampf(-(previous_velocity * 1.2), soft_max_bounce_height, 0)
+	$BounceCooldown.start()
 	
-	# Breaks the soft max bounce height on really high jumps
-	if previous_velocity > 1000:
-		var bonus_velocity: float = player.velocity.y - (previous_velocity + 1000)
-		player.velocity.y = clampf(bonus_velocity, max_bounce_height, 0)
+	if player.finished_initial_bounce == false:
+		player.finished_initial_bounce = true
+		player.velocity.y = clampf(-previous_velocity * 1.2, soft_max_bounce_height, 0)
+		
+		# Breaks the soft max bounce height on really high jumps
+		if previous_velocity > 1000:
+			var bonus_velocity: float = player.velocity.y - (previous_velocity + 1000)
+			player.velocity.y = clampf(bonus_velocity, max_bounce_height, 0)
+	else:
+		player.velocity.y = clampf(-previous_velocity * 0.9, max_bounce_height, 0)
 	
 	tween = create_tween()
 	tween.set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
@@ -54,3 +60,5 @@ func handle_transitions() -> void:
 		else:
 			state_bot.switch_to_state("Idle")
 		player.play_landing_animation()
+	elif Input.is_action_just_pressed("dash") and $BounceCooldown.is_stopped():
+		state_bot.switch_to_state("Dash")

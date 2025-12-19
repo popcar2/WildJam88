@@ -148,6 +148,9 @@ next_state = NodePath("Bounce")
 [node name="Bounce" type="Node" parent="StateBot/Dash"]
 script = ExtResource("11_74mp2")
 
+[node name="BounceCooldown" type="Timer" parent="StateBot/Dash/Bounce"]
+one_shot = true
+
 [node name="Damagable Reset Timer" type="Timer" parent="."]
 wait_time = 2.0
 
