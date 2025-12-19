@@ -75,6 +75,14 @@ func die():
 	
 	SceneManager.reset_scene()
 
+## Used when checking state from other entities
+func get_state() -> String:
+	return $StateBot.current_state.name
+
+## Used to force player to bounce
+func set_state(state: String) -> void:
+	$StateBot.switch_to_state(state)
+
 # ----- TWEEN ANIMATIONS -----
 
 func play_jump_animation():
