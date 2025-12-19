@@ -1,5 +1,8 @@
 extends Node2D
 
-func _on_body_entered(body: Node) -> void:
+@export var value = 0
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
-		body.take_damage()
+		Hud.add_coin(value);
+		queue_free()

@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://ojwhrg0u6bo4"]
+[gd_scene load_steps=10 format=4 uid="uid://ojwhrg0u6bo4"]
 
 [ext_resource type="PackedScene" uid="uid://c4s3fycysvqsi" path="res://Scenes/Player/player.tscn" id="2_36ke7"]
 [ext_resource type="Texture2D" uid="uid://betxptcohekqj" path="res://Assets/Kenny's Platformer Assets/Spritesheets/spritesheet-tiles-double.png" id="2_riv1q"]
+[ext_resource type="PackedScene" uid="uid://d3h5ciwqufnoh" path="res://Scenes/Exit Door/Exit Door.tscn" id="4_kri6y"]
+[ext_resource type="PackedScene" uid="uid://daf7e3e5j4yrb" path="res://Scenes/Coin/Coin.tscn" id="4_xvio3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_riv1q"]
 texture = ExtResource("2_riv1q")
@@ -789,3 +791,9 @@ tile_map_data = PackedByteArray("AAD+/wcAAAAIAAkAAAD+/wYAAAAIAAkAAAD+/wUAAAAIAAk
 tile_set = SubResource("TileSet_xvio3")
 
 [node name="Player" parent="." instance=ExtResource("2_36ke7")]
+
+[node name="Coin" parent="." instance=ExtResource("4_xvio3")]
+position = Vector2(299, 20)
+
+[node name="ExitDoor" parent="." instance=ExtResource("4_kri6y")]
+position = Vector2(1920, 296)

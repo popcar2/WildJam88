@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8pqdeliq4r8w"]
+
+[ext_resource type="Script" uid="uid://datuerybqbhjw" path="res://Scenes/Hazards/hazards.gd" id="1_ntog0"]
+[ext_resource type="Texture2D" uid="uid://cynsjaa4kwuxy" path="res://Assets/Kenny's Platformer Assets/Singular Images/saw.png" id="2_bnw7x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1uhi8"]
+
+[node name="Area2D" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_ntog0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3.5, 3.5)
+shape = SubResource("CircleShape2D_1uhi8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_bnw7x")
+
+[node name="PointA" type="Node2D" parent="."]
+
+[node name="PointB" type="Node2D" parent="."]
+position = Vector2(-303, 0)
