@@ -2,14 +2,13 @@ extends Node2D
 
 var player_target : Player
 var projectile_scene = preload("uid://1nyvrrqbu24v")
-@export var cooldown : float
-@onready var anim_player = $AnimationPlayer
-@onready var turret_head = $"Turret Head"
-@onready var projectile_spawn = %"Projectile Spawn Location"
-@onready var timer = $Timer
+
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
+@onready var turret_head: Sprite2D = $"Turret Head"
+@onready var projectile_spawn: Node2D = %"Projectile Spawn Location"
+@onready var cooldown_timer: Timer = $CooldownTimer
 
 func _ready() -> void:
-	timer.wait_time = cooldown
 	anim_player.play("Idle")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,23 +21,19 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		anim_player.stop()
 		player_target = body
-		_start_shooting_timer()
+		$StartTimer.start()
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is Player:
 		anim_player.play("Idle")
 		player_target = null
-		_stop_shooting_timer()
+		_stop_shooting_cooldown_timer()
 
 
-func _start_shooting_timer() -> void:
-	timer.start()
-
-
-func _stop_shooting_timer() -> void:
-	timer.stop()
-	timer.wait_time = cooldown;
+func _stop_shooting_cooldown_timer() -> void:
+	cooldown_timer.stop()
+	$StartTimer.stop()
 
 
 func _shoot() -> void:
@@ -48,5 +43,10 @@ func _shoot() -> void:
 	projectile.rotation_degrees = turret_head.rotation_degrees
 
 
-func _on_timer_timeout() -> void:
+func _on_cooldown_timer_timeout() -> void:
 	_shoot()
+
+
+func _on_start_timer_timeout() -> void:
+	_shoot()
+	cooldown_timer.start()

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjjc0vmsnkjux"]
+
+[ext_resource type="Script" uid="uid://bedf3885blmrd" path="res://Scenes/Enemies/Mouse/mouse_enemy.gd" id="1_igwbl"]
+[ext_resource type="Texture2D" uid="uid://xm15huv6gbf2" path="res://Scenes/Enemies/Mouse/mouse_walk_a.png" id="1_uinvy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1t0ib"]
+size = Vector2(77, 43.5)
+
+[node name="Mouse" type="Area2D"]
+collision_mask = 3
+script = ExtResource("1_igwbl")
+speed = 150.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_uinvy")
+centered = false
+offset = Vector2(-64, -128)
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.5, -22.25)
+shape = SubResource("RectangleShape2D_1t0ib")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
