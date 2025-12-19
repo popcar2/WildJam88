@@ -4,6 +4,7 @@ var tween: Tween
 
 func reset_scene():
 	%ColorRect.rotation_degrees = -90
+	%ColorRect.pivot_offset.y = 810
 	reset_tween()
 	await tween.tween_property(%ColorRect, "rotation_degrees", 0, 0.6).finished
 	
@@ -11,6 +12,7 @@ func reset_scene():
 	
 	Engine.time_scale = 1
 	
+	%ColorRect.pivot_offset.y = 0
 	reset_tween()
 	tween.tween_property(%ColorRect, "rotation_degrees", 95, 0.6)
 
