@@ -48,7 +48,6 @@ _data = {
 
 [node name="Turret" type="Node2D"]
 script = ExtResource("1_5s8j8")
-cooldown = 2.0
 
 [node name="Turret Base" type="Sprite2D" parent="."]
 position = Vector2(0, -24)
@@ -77,8 +76,14 @@ libraries = {
 &"": SubResource("AnimationLibrary_s7twe")
 }
 
-[node name="Timer" type="Timer" parent="."]
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

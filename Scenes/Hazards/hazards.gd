@@ -5,8 +5,8 @@ extends Area2D
 var start_at_a := true
 
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var point_a_node: Node2D = $PointA
-@onready var point_b_node: Node2D = $PointB
+@onready var point_a_node: Node2D = %PointA
+@onready var point_b_node: Node2D = %PointB
 
 var point_a_pos: Vector2
 var point_b_pos: Vector2
