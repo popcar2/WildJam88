@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cusq8g8vw54o5"]
+[gd_scene load_steps=5 format=3 uid="uid://cusq8g8vw54o5"]
 
 [ext_resource type="Script" uid="uid://dslxc0vdw7irn" path="res://Scenes/Singletons/HUD/hud.gd" id="1_8e72q"]
-[ext_resource type="Texture2D" uid="uid://b1ds8lv0js1bg" path="res://Assets/Kenny's Platformer Assets/Singular Images/coin_gold.png" id="1_ke4wc"]
+[ext_resource type="Texture2D" uid="uid://cy3rmut2frhw6" path="res://Assets/Kenny's Platformer Assets/Singular Images/hud_coin.png" id="2_8e72q"]
+[ext_resource type="Texture2D" uid="uid://bmgk4eii5b0qf" path="res://Assets/Kenny's Platformer Assets/Singular Images/hud_heart_empty.png" id="3_d2gho"]
+[ext_resource type="Texture2D" uid="uid://bd47nn6j6v2j3" path="res://Assets/Kenny's Platformer Assets/Singular Images/hud_heart.png" id="3_ikshg"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
+layer = 0
 script = ExtResource("1_8e72q")
+full_heart = ExtResource("3_ikshg")
+empty_heart = ExtResource("3_d2gho")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -22,7 +27,7 @@ anchor_right = 1.0
 offset_left = -128.0
 offset_bottom = 128.0
 grow_horizontal = 0
-texture = ExtResource("1_ke4wc")
+texture = ExtResource("2_8e72q")
 
 [node name="CoinLabel" type="Label" parent="Control"]
 unique_name_in_owner = true
@@ -38,3 +43,23 @@ theme_override_font_sizes/font_size = 50
 text = "0x"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Heart1" type="TextureRect" parent="Control/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("3_ikshg")
+
+[node name="Heart2" type="TextureRect" parent="Control/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("3_ikshg")
+
+[node name="Heart3" type="TextureRect" parent="Control/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("3_ikshg")

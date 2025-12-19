@@ -23,7 +23,7 @@ radius = 40.0
 
 [node name="Coin" type="Node2D"]
 script = ExtResource("1_ps24e")
-value = 1
+value = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6uhiq")

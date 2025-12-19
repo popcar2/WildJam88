@@ -13,6 +13,10 @@ const JUMP_VELOCITY: float = -700
 var is_damagable: bool = true
 var tween: Tween
 
+func _ready() -> void:
+	Hud.reset_hearts()
+	Hud.reset_coins()
+
 func _physics_process(delta: float) -> void:
 	update_tail_animation(delta)
 	
@@ -44,6 +48,9 @@ func take_damage(source: Node2D = null) -> void:
 		return
 	
 	hp -= 1
+	
+	Hud.set_hearts(hp)
+	
 	play_damage_effect()
 	is_damagable = false
 	animation_player.play("Damage_CoolDown_Animation")
