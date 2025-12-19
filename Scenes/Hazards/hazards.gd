@@ -16,7 +16,7 @@ func _ready() -> void:
 	point_a_pos = point_a_node.global_position
 	point_b_pos = point_b_node.global_position
 	target_pos = point_b_pos if start_at_a else point_a_pos
-	global_position = point_a_pos if start_at_a else point_b_pos
+	#global_position = point_a_pos if start_at_a else point_b_pos
 	body_entered.connect(_on_body_entered)
 
 func _physics_process(delta: float) -> void:

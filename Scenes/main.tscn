@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://dk7oat6yll2ro"]
+[gd_scene load_steps=11 format=4 uid="uid://dk7oat6yll2ro"]
 
 [ext_resource type="PackedScene" uid="uid://c4s3fycysvqsi" path="res://Scenes/Player/player.tscn" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://6kap25li4jd" path="res://Scenes/Turret/turret.tscn" id="3_8gbba"]
 [ext_resource type="Texture2D" uid="uid://betxptcohekqj" path="res://Assets/Kenny's Platformer Assets/Spritesheets/spritesheet-tiles-double.png" id="3_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://cjjc0vmsnkjux" path="res://Scenes/Enemies/Mouse/mouse_enemy.tscn" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://bsoe6qsld4ehf" path="res://Scenes/Hazards/Saw.tscn" id="5_kry3j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kry3j"]
 texture = ExtResource("3_jjvhh")
@@ -800,3 +801,24 @@ position = Vector2(564, 736)
 
 [node name="Mouse" parent="." instance=ExtResource("4_jjvhh")]
 position = Vector2(408, 96)
+
+[node name="Saw" parent="." instance=ExtResource("5_kry3j")]
+position = Vector2(-453, -141)
+
+[node name="PointA" parent="Saw" index="1"]
+position = Vector2(239, 86)
+
+[node name="PointB" parent="Saw" index="2"]
+position = Vector2(248, -180)
+
+[node name="Saw2" parent="." instance=ExtResource("5_kry3j")]
+position = Vector2(-291, -154)
+
+[node name="PointA" parent="Saw2" index="1"]
+position = Vector2(84, -221)
+
+[node name="PointB" parent="Saw2" index="2"]
+position = Vector2(220, 140)
+
+[editable path="Saw"]
+[editable path="Saw2"]

@@ -46,20 +46,25 @@ vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 20.0
+offset_top = 15.0
+offset_right = 301.0
+offset_bottom = 105.0
 
 [node name="Heart1" type="TextureRect" parent="Control/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("3_ikshg")
+expand_mode = 2
 
 [node name="Heart2" type="TextureRect" parent="Control/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("3_ikshg")
+expand_mode = 2
 
 [node name="Heart3" type="TextureRect" parent="Control/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("3_ikshg")
+expand_mode = 2
