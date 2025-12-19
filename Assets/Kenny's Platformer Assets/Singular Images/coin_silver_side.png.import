@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4qo8w6b7gadx"
-path="res://.godot/imported/block_spikes.png-68e357c41295a5f30538e037fab67bbf.ctex"
+uid="uid://djayhfoq4k8ky"
+path="res://.godot/imported/coin_silver_side.png-bd824ae881a7c3204823ce026117abc7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Kenny's Platformer Assets/block_spikes.png"
-dest_files=["res://.godot/imported/block_spikes.png-68e357c41295a5f30538e037fab67bbf.ctex"]
+source_file="res://Assets/Kenny's Platformer Assets/Singular Images/coin_silver_side.png"
+dest_files=["res://.godot/imported/coin_silver_side.png-bd824ae881a7c3204823ce026117abc7.ctex"]
 
 [params]
 

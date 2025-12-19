@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://daf7e3e5j4yrb"]
+
+[ext_resource type="Script" uid="uid://cjuhl57ic4x4l" path="res://Scenes/Coin/coin.gd" id="1_ps24e"]
+[ext_resource type="Texture2D" uid="uid://dg0b7to50dq3u" path="res://Assets/Kenny's Platformer Assets/Singular Images/coin_bronze.png" id="1_yb2ba"]
+[ext_resource type="Texture2D" uid="uid://c6pr0pgqftayy" path="res://Assets/Kenny's Platformer Assets/Singular Images/coin_bronze_side.png" id="2_ps24e"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6uhiq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yb2ba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ps24e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6uhiq"]
+
+[node name="Coin" type="Node2D"]
+script = ExtResource("1_ps24e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6uhiq")
+frame_progress = 0.15516584
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_6uhiq")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cynsjaa4kwuxy"
-path="res://.godot/imported/saw.png-8e19854f9320816779901045d4ff587e.ctex"
+uid="uid://c6pr0pgqftayy"
+path="res://.godot/imported/coin_bronze_side.png-2abe3ca4a19b972693a2f171b1b94fcb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Kenny's Platformer Assets/saw.png"
-dest_files=["res://.godot/imported/saw.png-8e19854f9320816779901045d4ff587e.ctex"]
+source_file="res://Assets/Kenny's Platformer Assets/Singular Images/coin_bronze_side.png"
+dest_files=["res://.godot/imported/coin_bronze_side.png-2abe3ca4a19b972693a2f171b1b94fcb.ctex"]
 
 [params]
 
