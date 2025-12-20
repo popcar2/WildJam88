@@ -26,7 +26,7 @@ func _enter_state(last_state: SimpleState) -> void:
 	else:
 		player.velocity.y = clampf(-previous_velocity * 0.85, max_bounce_height, 0)
 	
-	print(previous_velocity, "\t", player.velocity.y)
+	#print(previous_velocity, "\t", player.velocity.y)
 	tween = create_tween()
 	tween.set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 	tween.tween_property(%AnimatedSprite2D, "rotation_degrees", 0, 2)

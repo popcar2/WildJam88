@@ -12,6 +12,7 @@ const JUMP_VELOCITY: float = -700
 @onready var animation_player = $SpriteOffset/AnimationPlayer
 
 var is_damagable: bool = true
+var is_dead: bool = false
 var finished_initial_bounce: bool = false
 var tween: Tween
 
@@ -20,12 +21,11 @@ func _ready() -> void:
 	Hud.reset_coins()
 	Hud.show_hud()
 
-func _process(delta: float) -> void:
-	if global_position.y >= 1000:
-		die()
-
 func _physics_process(delta: float) -> void:
 	update_tail_animation(delta)
+	
+	if velocity.y >= 3000:
+		die()
 	
 	for i in get_slide_collision_count():
 		var body = get_slide_collision(i)
@@ -74,6 +74,11 @@ func take_damage(source: Node2D = null) -> void:
 		die()
 
 func die():
+	if is_dead:
+		return
+	
+	is_dead = true
+	
 	var death_tween: Tween = create_tween()
 	death_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC).set_parallel()
 	death_tween.set_ignore_time_scale()

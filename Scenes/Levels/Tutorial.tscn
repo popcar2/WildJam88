@@ -1039,35 +1039,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="BounceTutorial4" type="Panel" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 3776.0
-offset_top = -320.0
-offset_right = 4177.0
-offset_bottom = -128.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_u3mja")
-
-[node name="Label" type="Label" parent="BounceTutorial4"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 32.0
-offset_right = -17.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Go back up and bounce off this floor!"
-label_settings = SubResource("LabelSettings_l14b5")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
 [node name="BounceTutorial3" type="Panel" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
@@ -1107,6 +1078,93 @@ grow_horizontal = 2
 text = "X"
 label_settings = SubResource("LabelSettings_65xyd")
 horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="BounceTutorial4" type="Panel" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 3776.0
+offset_top = -320.0
+offset_right = 4177.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_u3mja")
+
+[node name="Label" type="Label" parent="BounceTutorial4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_right = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Go back up and bounce off this floor!"
+label_settings = SubResource("LabelSettings_l14b5")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="BounceTutorial5" type="Panel" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 4608.0
+offset_top = -992.0
+offset_right = 5009.0
+offset_bottom = -800.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_u3mja")
+
+[node name="Label" type="Label" parent="BounceTutorial5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_right = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Bouncing twice in a row reduces your bounce height..."
+label_settings = SubResource("LabelSettings_l14b5")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="BounceTutorial6" type="Panel" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 5152.0
+offset_top = -992.0
+offset_right = 5760.0
+offset_bottom = -800.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_u3mja")
+
+[node name="Label" type="Label" parent="BounceTutorial6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_right = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Bouncing also increases your horizontal momentum, so bounce often to go fast!"
+label_settings = SubResource("LabelSettings_l14b5")
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Coins" type="Node2D" parent="."]
