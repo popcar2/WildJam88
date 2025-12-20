@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://daf7e3e5j4yrb"]
+[gd_scene load_steps=7 format=3 uid="uid://daf7e3e5j4yrb"]
 
 [ext_resource type="Script" uid="uid://cjuhl57ic4x4l" path="res://Scenes/Coin/coin.gd" id="1_ps24e"]
 [ext_resource type="Texture2D" uid="uid://dg0b7to50dq3u" path="res://Assets/Kenny's Platformer Assets/Singular Images/coin_bronze.png" id="1_yb2ba"]
 [ext_resource type="Texture2D" uid="uid://c6pr0pgqftayy" path="res://Assets/Kenny's Platformer Assets/Singular Images/coin_bronze_side.png" id="2_ps24e"]
+[ext_resource type="AudioStream" uid="uid://i0npoy5luj1e" path="res://Scenes/Coin/coin.mp3" id="4_hp05k"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6uhiq"]
 animations = [{
@@ -34,5 +35,9 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_6uhiq")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_hp05k")
+volume_db = -10.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

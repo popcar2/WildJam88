@@ -73,6 +73,7 @@ func die():
 	var death_tween: Tween = create_tween()
 	death_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC).set_parallel()
 	death_tween.set_ignore_time_scale()
+	death_tween.tween_property(get_tree().current_scene, "modulate", Color(0.6, 0.6, 0.6), 1)
 	death_tween.tween_property(Engine, "time_scale", 0.1, 1)
 	await death_tween.tween_property($Camera2D, "zoom", Vector2(1, 1), 1).finished
 	

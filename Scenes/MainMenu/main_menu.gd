@@ -2,6 +2,7 @@ extends Control
 
 func _ready() -> void:
 	Hud.hide_hud()
+	%StartGameButton.grab_focus()
 
 func _on_start_game_button_pressed() -> void:
 	SceneManager.load_scene("uid://belwxjhsdk1im")

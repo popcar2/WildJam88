@@ -6,6 +6,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		Hud.add_coin(value)
 		$Area2D.set_deferred("monitoring", false)
+		$AudioStreamPlayer2D.pitch_scale = randf_range(0.95, 1.05)
+		$AudioStreamPlayer2D.play()
 		play_collect_animation()
 
 func play_collect_animation():
