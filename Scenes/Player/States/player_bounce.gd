@@ -1,8 +1,8 @@
 @warning_ignore("missing_tool")
 extends SimpleState
 
-@export var soft_max_bounce_height: float = -1000
-@export var max_bounce_height: float = -1300
+#@export var soft_max_bounce_height: float = -1200
+@export var max_bounce_height: float = -1800
 
 @onready var player: Player = state_bot.puppet
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
@@ -16,15 +16,17 @@ func _enter_state(last_state: SimpleState) -> void:
 	
 	if player.finished_initial_bounce == false:
 		player.finished_initial_bounce = true
-		player.velocity.y = clampf(-previous_velocity * 1.2, soft_max_bounce_height, 0)
+		player.velocity.y = clampf(-previous_velocity * 1.2, max_bounce_height, 0)
 		
 		# Breaks the soft max bounce height on really high jumps
-		if previous_velocity > 1000:
-			var bonus_velocity: float = player.velocity.y - (previous_velocity + 1000)
-			player.velocity.y = clampf(bonus_velocity, max_bounce_height, 0)
+		#if previous_velocity > 1200:
+		#	var bonus_velocity: float = player.velocity.y - previous_velocity + 1200
+		#	print(bonus_velocity)
+		#	player.velocity.y = clampf(bonus_velocity, max_bounce_height, 0)
 	else:
-		player.velocity.y = clampf(-previous_velocity * 0.9, max_bounce_height, 0)
+		player.velocity.y = clampf(-previous_velocity * 0.85, max_bounce_height, 0)
 	
+	print(previous_velocity, "\t", player.velocity.y)
 	tween = create_tween()
 	tween.set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 	tween.tween_property(%AnimatedSprite2D, "rotation_degrees", 0, 2)
