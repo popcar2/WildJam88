@@ -10,12 +10,15 @@ const JUMP_VELOCITY: float = -700
 
 @onready var damagable_reset_timer = $"Damagable Reset Timer"
 @onready var animation_player = $SpriteOffset/AnimationPlayer
+
 var is_damagable: bool = true
+var finished_initial_bounce: bool = false
 var tween: Tween
 
 func _ready() -> void:
 	Hud.reset_hearts()
 	Hud.reset_coins()
+	Hud.show_hud()
 
 func _physics_process(delta: float) -> void:
 	update_tail_animation(delta)
@@ -70,10 +73,19 @@ func die():
 	var death_tween: Tween = create_tween()
 	death_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC).set_parallel()
 	death_tween.set_ignore_time_scale()
+	death_tween.tween_property(get_tree().current_scene, "modulate", Color(0.6, 0.6, 0.6), 1)
 	death_tween.tween_property(Engine, "time_scale", 0.1, 1)
 	await death_tween.tween_property($Camera2D, "zoom", Vector2(1, 1), 1).finished
 	
-	SceneManager.reset_scene()
+	SceneManager.load_scene()
+
+## Used when checking state from other entities
+func get_state() -> String:
+	return $StateBot.current_state.name
+
+## Used to force player to bounce
+func set_state(state: String) -> void:
+	$StateBot.switch_to_state(state)
 
 # ----- TWEEN ANIMATIONS -----
 

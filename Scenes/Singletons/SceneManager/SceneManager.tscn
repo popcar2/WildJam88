@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bn8obxs21p52q" path="res://Scenes/Singletons/SceneManager/scene_manager.gd" id="1_lb76v"]
 
 [node name="SceneManager" type="CanvasLayer"]
+layer = 5
 script = ExtResource("1_lb76v")
 
 [node name="Control" type="Control" parent="."]
@@ -27,5 +28,6 @@ offset_bottom = 132.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -1.5707964
+pivot_offset = Vector2(0, 810)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)

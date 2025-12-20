@@ -1,10 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjjc0vmsnkjux"]
+[gd_scene load_steps=7 format=3 uid="uid://cjjc0vmsnkjux"]
 
 [ext_resource type="Script" uid="uid://bedf3885blmrd" path="res://Scenes/Enemies/Mouse/mouse_enemy.gd" id="1_igwbl"]
 [ext_resource type="Texture2D" uid="uid://xm15huv6gbf2" path="res://Scenes/Enemies/Mouse/mouse_walk_a.png" id="1_uinvy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1t0ib"]
 size = Vector2(77, 43.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_igwbl"]
+size = Vector2(8, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1esr"]
+size = Vector2(8, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_armof"]
+size = Vector2(77, 20)
 
 [node name="Mouse" type="Area2D"]
 collision_mask = 3
@@ -22,4 +31,29 @@ flip_h = true
 position = Vector2(3.5, -22.25)
 shape = SubResource("RectangleShape2D_1t0ib")
 
+[node name="FloorCheckArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorCheckArea"]
+position = Vector2(46, 0)
+shape = SubResource("RectangleShape2D_igwbl")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="WallCheckArea" type="Area2D" parent="."]
+position = Vector2(41, -34)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCheckArea"]
+position = Vector2(5, 0)
+shape = SubResource("RectangleShape2D_e1esr")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="BounceArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BounceArea"]
+position = Vector2(3.5, -54)
+shape = SubResource("RectangleShape2D_armof")
+debug_color = Color(0, 0.73946756, 0.23603278, 0.41960785)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="FloorCheckArea" to="." method="_on_floor_check_area_body_exited"]
+[connection signal="body_entered" from="BounceArea" to="." method="_on_bounce_area_body_entered"]

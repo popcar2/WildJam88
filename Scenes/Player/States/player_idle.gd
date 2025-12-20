@@ -6,6 +6,7 @@ extends SimpleState
 
 func _enter_state(_last_state: SimpleState) -> void:
 	%AnimatedSprite2D.play("idle")
+	player.finished_initial_bounce = false
 
 
 func _exit_state(_new_state: SimpleState) -> void:

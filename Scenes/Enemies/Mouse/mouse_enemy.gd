@@ -30,3 +30,16 @@ func reset_tween():
 	
 	tween = create_tween()
 	tween.set_parallel()
+
+
+func _on_floor_check_area_body_exited(body: Node2D) -> void:
+	if body is TileMapLayer:
+		scale.x *= -1
+		speed *= -1
+
+
+func _on_bounce_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		if body.get_state() == "Dash":
+			body.set_state("Bounce")
+			queue_free()
