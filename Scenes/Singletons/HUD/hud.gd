@@ -34,3 +34,9 @@ func _draw_hearts() -> void:
 func reset_hearts() -> void:
 	hearts = heart_nodes.size()   # 3 in your case
 	_draw_hearts()
+
+func hide_hud():
+	visible = false
+
+func show_hud():
+	visible = true

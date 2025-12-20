@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bn8obxs21p52q" path="res://Scenes/Singletons/SceneManager/scene_manager.gd" id="1_lb76v"]
 
 [node name="SceneManager" type="CanvasLayer"]
+layer = 5
 script = ExtResource("1_lb76v")
 
 [node name="Control" type="Control" parent="."]

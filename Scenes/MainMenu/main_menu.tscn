@@ -1,0 +1,301 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbaqftvggfupj"]
+
+[ext_resource type="PackedScene" uid="uid://27xq5u6wiy6i" path="res://Scenes/Parallax/forest_parallax.tscn" id="1_uqdog"]
+[ext_resource type="Script" uid="uid://d3nbhud335okv" path="res://Scenes/MainMenu/main_menu.gd" id="1_v763k"]
+
+[sub_resource type="GDScript" id="GDScript_uqdog"]
+resource_name = "main_menu_camera"
+script/source = "extends Camera2D
+
+func _physics_process(delta: float) -> void:
+	position.x += 50 * delta
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_r0mel"]
+font_size = 64
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(7, 7)
+stacked_outline_count = 1
+stacked_outline_0/size = 16
+stacked_outline_0/color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v763k"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.022979883, 0.022979883, 0.022979883, 0.8627451)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_v763k"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_qgdf6"]
+font_size = 32
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v763k")
+
+[node name="ForestParallax" parent="." instance=ExtResource("1_uqdog")]
+position = Vector2(0, 180)
+scale = Vector2(0.6, 0.6)
+
+[node name="Parallax2D3" parent="ForestParallax" index="2"]
+scroll_scale = Vector2(0.6, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 347)
+process_callback = 0
+script = SubResource("GDScript_uqdog")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenuControl" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/MainMenuControl"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -257.5
+offset_top = 101.0
+offset_right = 257.5
+offset_bottom = 189.0
+grow_horizontal = 2
+text = "RACCOON GAME"
+label_settings = SubResource("LabelSettings_r0mel")
+horizontal_alignment = 1
+
+[node name="ButtonPanel" type="Panel" parent="CanvasLayer/MainMenuControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -12.0
+offset_right = 150.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainMenuControl/ButtonPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenuControl/ButtonPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="StartGameButton" type="Button" parent="CanvasLayer/MainMenuControl/ButtonPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Start Game"
+
+[node name="CreditsButton" type="Button" parent="CanvasLayer/MainMenuControl/ButtonPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Credits"
+
+[node name="CreditsControl" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/CreditsControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -282.0
+offset_right = 400.0
+offset_bottom = 218.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v763k")
+
+[node name="Label" type="Label" parent="CanvasLayer/CreditsControl/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 124.0
+grow_horizontal = 2
+text = "Credits"
+label_settings = SubResource("LabelSettings_v763k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CreditsControl/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 111.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CreditsControl/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/CreditsControl/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+text = "Lead Developer"
+label_settings = SubResource("LabelSettings_qgdf6")
+
+[node name="Label2" type="Label" parent="CanvasLayer/CreditsControl/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+text = "popcar2"
+label_settings = SubResource("LabelSettings_qgdf6")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/CreditsControl/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/CreditsControl/Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+text = "Programmer"
+label_settings = SubResource("LabelSettings_qgdf6")
+
+[node name="Label2" type="Label" parent="CanvasLayer/CreditsControl/Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+text = "The Game Lord Tantawii"
+label_settings = SubResource("LabelSettings_qgdf6")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/CreditsControl/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/CreditsControl/Panel/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+text = "Programmer"
+label_settings = SubResource("LabelSettings_qgdf6")
+
+[node name="Label2" type="Label" parent="CanvasLayer/CreditsControl/Panel/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+text = "Marwan Eltaiby"
+label_settings = SubResource("LabelSettings_qgdf6")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/CreditsControl/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/CreditsControl/Panel/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+text = "Artist"
+label_settings = SubResource("LabelSettings_qgdf6")
+
+[node name="Label2" type="Label" parent="CanvasLayer/CreditsControl/Panel/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+text = "Nour El Deen Magdy"
+label_settings = SubResource("LabelSettings_qgdf6")
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="CanvasLayer/CreditsControl/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/CreditsControl/Panel/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+text = "Music & SFX"
+label_settings = SubResource("LabelSettings_qgdf6")
+
+[node name="Label2" type="Label" parent="CanvasLayer/CreditsControl/Panel/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+text = "Maro"
+label_settings = SubResource("LabelSettings_qgdf6")
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="CanvasLayer/CreditsControl/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/CreditsControl/Panel/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+text = "Level Design"
+label_settings = SubResource("LabelSettings_qgdf6")
+
+[node name="Label2" type="Label" parent="CanvasLayer/CreditsControl/Panel/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+text = "Khaled"
+label_settings = SubResource("LabelSettings_qgdf6")
+
+[node name="BackButton" type="Button" parent="CanvasLayer/CreditsControl"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -114.75
+offset_top = -82.0
+offset_right = 114.75
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back to Main Menu"
+
+[connection signal="pressed" from="CanvasLayer/MainMenuControl/ButtonPanel/MarginContainer/VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenuControl/ButtonPanel/MarginContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/CreditsControl/BackButton" to="." method="_on_back_button_pressed"]
+
+[editable path="ForestParallax"]

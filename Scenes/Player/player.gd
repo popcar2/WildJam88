@@ -18,6 +18,7 @@ var tween: Tween
 func _ready() -> void:
 	Hud.reset_hearts()
 	Hud.reset_coins()
+	Hud.show_hud()
 
 func _physics_process(delta: float) -> void:
 	update_tail_animation(delta)
@@ -75,7 +76,7 @@ func die():
 	death_tween.tween_property(Engine, "time_scale", 0.1, 1)
 	await death_tween.tween_property($Camera2D, "zoom", Vector2(1, 1), 1).finished
 	
-	SceneManager.reset_scene()
+	SceneManager.load_scene()
 
 ## Used when checking state from other entities
 func get_state() -> String:

@@ -1,11 +1,13 @@
-[gd_scene load_steps=18 format=4 uid="uid://belwxjhsdk1im"]
+[gd_scene load_steps=23 format=4 uid="uid://belwxjhsdk1im"]
 
+[ext_resource type="PackedScene" uid="uid://27xq5u6wiy6i" path="res://Scenes/Parallax/forest_parallax.tscn" id="1_65xyd"]
 [ext_resource type="Texture2D" uid="uid://betxptcohekqj" path="res://Assets/Kenny's Platformer Assets/Spritesheets/spritesheet-tiles-double.png" id="1_fucd8"]
 [ext_resource type="PackedScene" uid="uid://c4s3fycysvqsi" path="res://Scenes/Player/player.tscn" id="2_jmmpn"]
 [ext_resource type="PackedScene" uid="uid://daf7e3e5j4yrb" path="res://Scenes/Coin/Coin.tscn" id="3_mviin"]
 [ext_resource type="Texture2D" uid="uid://bgoi1vevsflr3" path="res://Assets/Kenny's Platformer Assets/Singular Images/Keys/keyboard_arrows_horizontal.svg" id="3_s8jsh"]
 [ext_resource type="Texture2D" uid="uid://cfjmc8meetghv" path="res://Assets/Kenny's Platformer Assets/Singular Images/Keys/keyboard_z.svg" id="3_se31e"]
 [ext_resource type="Texture2D" uid="uid://2cqms7hb00xn" path="res://Assets/Kenny's Platformer Assets/Singular Images/Keys/keyboard_space_icon.svg" id="4_fucd8"]
+[ext_resource type="Texture2D" uid="uid://bq4nkd1tjh1ku" path="res://Assets/Kenny's Platformer Assets/Singular Images/Keys/keyboard_arrows_up.svg" id="5_65xyd"]
 [ext_resource type="Texture2D" uid="uid://dxbxyaoolri6d" path="res://Assets/Kenny's Platformer Assets/Singular Images/Keys/keyboard_x.svg" id="5_l14b5"]
 [ext_resource type="Texture2D" uid="uid://c58xat3beu4y1" path="res://Assets/Kenny's Platformer Assets/Singular Images/Keys/keyboard_arrows_down.svg" id="6_obqwn"]
 
@@ -782,9 +784,45 @@ terrain_set_0/terrain_5/name = "Castle"
 terrain_set_0/terrain_5/color = Color(0.99999994, 0.15990219, 0.16397834, 1)
 sources/0 = SubResource("TileSetAtlasSource_xvio3")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65xyd"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0.92156863)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
 [sub_resource type="LabelSettings" id="LabelSettings_dl4mt"]
 font_size = 48
 outline_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_356um"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0.92156863)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3mja"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0.92156863)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_l14b5"]
 font_size = 32
@@ -797,6 +835,9 @@ font_size = 64
 font_color = Color(0.90588236, 0.19607843, 0.27450982, 1)
 
 [node name="Level1" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [-3754.0]
+
+[node name="ForestParallax" parent="." instance=ExtResource("1_65xyd")]
 
 [node name="HazardLayer" type="TileMapLayer" parent="." groups=["hazards"]]
 scale = Vector2(0.75, 0.75)
@@ -821,6 +862,7 @@ offset_right = 184.5
 offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_65xyd")
 
 [node name="LeftRightArrows" type="TextureRect" parent="MoveTutorial"]
 layout_mode = 1
@@ -858,12 +900,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 414.0
+offset_left = 295.0
 offset_top = -336.0
 offset_right = 783.0
 offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_356um")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="JumpTutorial"]
 layout_mode = 1
@@ -883,6 +926,10 @@ grow_vertical = 2
 self_modulate = Color(0.90588236, 0.19607843, 0.27450982, 1)
 layout_mode = 2
 texture = ExtResource("3_se31e")
+
+[node name="LeftRightArrows3" type="TextureRect" parent="JumpTutorial/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_65xyd")
 
 [node name="LeftRightArrows2" type="TextureRect" parent="JumpTutorial/HBoxContainer"]
 self_modulate = Color(0.90588236, 0.19607843, 0.27450982, 1)
@@ -919,6 +966,7 @@ offset_right = 1777.0
 offset_bottom = -257.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_u3mja")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="BounceTutorial"]
 layout_mode = 1
@@ -973,6 +1021,7 @@ offset_right = 2193.0
 offset_bottom = -257.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_u3mja")
 
 [node name="Label" type="Label" parent="BounceTutorial2"]
 layout_mode = 1
@@ -996,12 +1045,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 3392.0
+offset_left = 3776.0
 offset_top = -320.0
-offset_right = 3793.0
+offset_right = 4177.0
 offset_bottom = -128.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_u3mja")
 
 [node name="Label" type="Label" parent="BounceTutorial4"]
 layout_mode = 1
@@ -1030,6 +1080,7 @@ offset_right = 2466.0
 offset_bottom = -384.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_u3mja")
 
 [node name="Label" type="Label" parent="BounceTutorial3"]
 layout_mode = 1
@@ -1059,7 +1110,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Player" parent="." instance=ExtResource("2_jmmpn")]
-position = Vector2(192, -1152)
+position = Vector2(0, 27)
 hp = 3
 
 [node name="Coins" type="Node2D" parent="."]
