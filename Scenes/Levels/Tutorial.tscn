@@ -1109,10 +1109,6 @@ label_settings = SubResource("LabelSettings_65xyd")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Player" parent="." instance=ExtResource("2_jmmpn")]
-position = Vector2(0, 27)
-hp = 3
-
 [node name="Coins" type="Node2D" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource("3_mviin")]
@@ -1189,3 +1185,7 @@ position = Vector2(-1200, -1104)
 
 [node name="Coin20" parent="Coins" instance=ExtResource("3_mviin")]
 position = Vector2(-1200, -1008)
+
+[node name="Player" parent="." instance=ExtResource("2_jmmpn")]
+position = Vector2(0, 27)
+hp = 3

@@ -20,6 +20,10 @@ func _ready() -> void:
 	Hud.reset_coins()
 	Hud.show_hud()
 
+func _process(delta: float) -> void:
+	if global_position.y >= 1000:
+		die()
+
 func _physics_process(delta: float) -> void:
 	update_tail_animation(delta)
 	
