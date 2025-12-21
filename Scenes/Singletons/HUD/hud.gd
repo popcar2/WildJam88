@@ -17,15 +17,12 @@ var level_running: bool = false
 
 @onready var timer_Label = %TimerLabel
 
-func _ready() -> void:
-	_start_level_timer()
-
 func _process(delta: float) -> void:
 	if level_running:
 		level_time += delta
 		_update_timer_label()
 
-func _start_level_timer() -> void:
+func start_level_timer() -> void:
 	level_time = 0.0
 	level_running = true
 	_update_timer_label()
@@ -35,6 +32,7 @@ func stop_level_timer() -> void:
 
 func _update_timer_label() -> void:
 	var total_seconds: int = int(level_time)
+	@warning_ignore("integer_division")
 	var minutes: int = total_seconds / 60
 	var seconds: int = total_seconds % 60
 	timer_Label.text = "%02d:%02d" % [minutes, seconds]

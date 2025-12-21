@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbaqftvggfupj"]
+[gd_scene load_steps=12 format=3 uid="uid://cbaqftvggfupj"]
 
 [ext_resource type="PackedScene" uid="uid://27xq5u6wiy6i" path="res://Scenes/Parallax/forest_parallax.tscn" id="1_uqdog"]
 [ext_resource type="Script" uid="uid://d3nbhud335okv" path="res://Scenes/MainMenu/main_menu.gd" id="1_v763k"]
@@ -21,6 +21,63 @@ shadow_offset = Vector2(7, 7)
 stacked_outline_count = 1
 stacked_outline_0/size = 16
 stacked_outline_0/color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgdf6"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0.35000116, 0.15894803, 1)
+corner_radius_top_left = 26
+corner_radius_top_right = 26
+corner_radius_bottom_right = 26
+corner_radius_bottom_left = 26
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qgbs"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(4.933402e-07, 0.25392646, 0.10999557, 1)
+corner_radius_top_left = 26
+corner_radius_top_right = 26
+corner_radius_bottom_right = 26
+corner_radius_bottom_left = 26
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_adu2g"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1.5642494e-06, 0.48773694, 0.23487219, 1)
+corner_radius_top_left = 26
+corner_radius_top_right = 26
+corner_radius_bottom_right = 26
+corner_radius_bottom_left = 26
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0l8wx"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0.34901962, 0.16078432, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(3.9948522e-06, 0.8108985, 0.40747046, 1)
+corner_radius_top_left = 26
+corner_radius_top_right = 26
+corner_radius_bottom_right = 26
+corner_radius_bottom_left = 26
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v763k"]
 content_margin_left = 0.0
@@ -93,37 +150,51 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
+offset_left = -171.0
 offset_top = -12.0
-offset_right = 150.0
-offset_bottom = 288.0
+offset_right = 169.0
+offset_bottom = 188.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainMenuControl/ButtonPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenuControl/ButtonPanel/MarginContainer"]
-layout_mode = 2
-
-[node name="StartGameButton" type="Button" parent="CanvasLayer/MainMenuControl/ButtonPanel/MarginContainer/VBoxContainer"]
+[node name="StartGameButton" type="Button" parent="CanvasLayer/MainMenuControl/ButtonPanel"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -140.0
+offset_top = 25.0
+offset_right = 140.0
+offset_bottom = 85.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_qgdf6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0qgbs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_adu2g")
+theme_override_styles/focus = SubResource("StyleBoxFlat_0l8wx")
 text = "Start Game"
 
-[node name="CreditsButton" type="Button" parent="CanvasLayer/MainMenuControl/ButtonPanel/MarginContainer/VBoxContainer"]
+[node name="CreditsButton" type="Button" parent="CanvasLayer/MainMenuControl/ButtonPanel"]
 custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -85.0
+offset_right = 140.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_qgdf6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0qgbs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_adu2g")
+theme_override_styles/focus = SubResource("StyleBoxFlat_0l8wx")
 text = "Credits"
 
 [node name="CreditsControl" type="Control" parent="CanvasLayer"]
@@ -264,22 +335,28 @@ label_settings = SubResource("LabelSettings_qgdf6")
 
 [node name="BackButton" type="Button" parent="CanvasLayer/CreditsControl"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -114.75
-offset_top = -82.0
-offset_right = 114.75
-offset_bottom = -15.0
+offset_left = -173.25
+offset_top = -87.0
+offset_right = 173.25
+offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_qgdf6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0qgbs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_adu2g")
+theme_override_styles/focus = SubResource("StyleBoxFlat_0l8wx")
 text = "Back to Main Menu"
 
-[connection signal="pressed" from="CanvasLayer/MainMenuControl/ButtonPanel/MarginContainer/VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/MainMenuControl/ButtonPanel/MarginContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenuControl/ButtonPanel/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenuControl/ButtonPanel/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/CreditsControl/BackButton" to="." method="_on_back_button_pressed"]
 
 [editable path="ForestParallax"]

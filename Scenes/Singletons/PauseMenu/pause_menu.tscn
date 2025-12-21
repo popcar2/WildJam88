@@ -1,45 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdrlsf6xqpthr"]
+[gd_scene load_steps=10 format=3 uid="uid://bdrlsf6xqpthr"]
 
 [ext_resource type="Script" uid="uid://dpqpjwoej5o3n" path="res://Scenes/Singletons/PauseMenu/pause_menu.gd" id="1_gbkv2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pk4vc"]
 font_size = 80
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbkv2"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(2.0214916e-06, 0.71081054, 0.34887776, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2hbkp"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0, 0.50237113, 0.23943958, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gk4rt"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0, 0.889898, 0.44415665, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_gbkv2"]
 font_size = 32
@@ -67,6 +31,63 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbkv2"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0.35000116, 0.15894803, 1)
+corner_radius_top_left = 26
+corner_radius_top_right = 26
+corner_radius_bottom_right = 26
+corner_radius_bottom_left = 26
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2hbkp"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(4.933402e-07, 0.25392646, 0.10999557, 1)
+corner_radius_top_left = 26
+corner_radius_top_right = 26
+corner_radius_bottom_right = 26
+corner_radius_bottom_left = 26
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gk4rt"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1.5642494e-06, 0.48773694, 0.23487219, 1)
+corner_radius_top_left = 26
+corner_radius_top_right = 26
+corner_radius_bottom_right = 26
+corner_radius_bottom_left = 26
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kajko"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0.34901962, 0.16078432, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(3.9948522e-06, 0.8108985, 0.40747046, 1)
+corner_radius_top_left = 26
+corner_radius_top_right = 26
+corner_radius_bottom_right = 26
+corner_radius_bottom_left = 26
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -103,26 +124,6 @@ text = "PAUSED"
 label_settings = SubResource("LabelSettings_pk4vc")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="ResumeButton" type="Button" parent="Control/TextureRect"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -120.0
-offset_top = 113.0
-offset_right = 120.0
-offset_bottom = 193.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxFlat_gbkv2")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_2hbkp")
-theme_override_styles/hover = SubResource("StyleBoxFlat_gk4rt")
-text = "Resume"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/TextureRect"]
 layout_mode = 1
@@ -178,6 +179,25 @@ max_value = 1.0
 step = 0.01
 value = 0.8
 
-[connection signal="pressed" from="Control/TextureRect/ResumeButton" to="." method="_on_resume_button_pressed"]
+[node name="ResumeButton" type="Button" parent="Control/TextureRect"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -140.0
+offset_top = 450.0
+offset_right = 140.0
+offset_bottom = 528.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_gbkv2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2hbkp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gk4rt")
+theme_override_styles/focus = SubResource("StyleBoxFlat_kajko")
+text = "Resume"
+
 [connection signal="value_changed" from="Control/TextureRect/VBoxContainer/HBoxContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="value_changed" from="Control/TextureRect/VBoxContainer/HBoxContainer2/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="pressed" from="Control/TextureRect/ResumeButton" to="." method="_on_resume_button_pressed"]

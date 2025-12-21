@@ -1,0 +1,242 @@
+[gd_scene load_steps=13 format=3 uid="uid://deq2jbjjylqf"]
+
+[ext_resource type="Script" uid="uid://cvdrotwuujkns" path="res://Scenes/WinScreen/win_screen.gd" id="1_0vi82"]
+[ext_resource type="PackedScene" uid="uid://27xq5u6wiy6i" path="res://Scenes/Parallax/forest_parallax.tscn" id="2_knlie"]
+[ext_resource type="Texture2D" uid="uid://c2nc16sbutth1" path="res://Assets/Backgrounds/grass.jpg" id="3_x1mnx"]
+
+[sub_resource type="GDScript" id="GDScript_x1mnx"]
+resource_name = "main_menu_camera"
+script/source = "extends Camera2D
+
+func _physics_process(delta: float) -> void:
+	position.x += 50 * delta
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knlie"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.02617561, 0.026175609, 0.026175609, 0.8901961)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_b1bls"]
+font_size = 96
+
+[sub_resource type="LabelSettings" id="LabelSettings_0vi82"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_x1mnx"]
+font_size = 22
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wifr8"]
+font_size = 48
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1mnx"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0.35000116, 0.15894803, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wifr8"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1.8049032e-08, 0.2709195, 0.11907134, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oyqek"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(2.9359758e-06, 0.54589224, 0.26593256, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0vi82")
+
+[node name="ForestParallax" parent="." instance=ExtResource("2_knlie")]
+position = Vector2(0, 180)
+scale = Vector2(0.6, 0.6)
+
+[node name="Parallax2D3" parent="ForestParallax" index="2"]
+scroll_scale = Vector2(0.6, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 347)
+process_callback = 0
+script = SubResource("GDScript_x1mnx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 112.0
+offset_top = 40.0
+offset_right = -129.0
+offset_bottom = -256.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_knlie")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -303.5
+offset_top = 25.0
+offset_right = 303.5
+offset_bottom = 157.0
+grow_horizontal = 2
+text = "YOU WIN!"
+label_settings = SubResource("LabelSettings_b1bls")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer/Control/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -361.5
+offset_top = -170.0
+offset_right = 361.5
+offset_bottom = -103.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "You won in XX:YY"
+label_settings = SubResource("LabelSettings_0vi82")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CoinCountLabel" type="Label" parent="CanvasLayer/Control/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -361.5
+offset_top = -99.0
+offset_right = 361.5
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "You've collected XXX/ZZZ coins!"
+label_settings = SubResource("LabelSettings_0vi82")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GrassTexture" type="TextureRect" parent="CanvasLayer/Control/Panel"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = -55.00001
+offset_top = 289.0
+offset_right = 281.0
+offset_bottom = 703.0
+rotation = 0.2030958
+texture = ExtResource("3_x1mnx")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Panel/GrassTexture"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -149.36145
+offset_top = 1.2665973
+offset_right = 190.63855
+offset_bottom = 35.266598
+grow_horizontal = 2
+text = "You should really touch grass"
+label_settings = SubResource("LabelSettings_x1mnx")
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/Panel/GrassTexture"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -166.46304
+offset_top = -213.18259
+offset_right = 173.53696
+offset_bottom = -146.18259
+grow_horizontal = 2
+grow_vertical = 0
+text = "NOW."
+label_settings = SubResource("LabelSettings_wifr8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackToMenuButton" type="Button" parent="CanvasLayer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -251.75
+offset_top = -139.0
+offset_right = 251.75
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_x1mnx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wifr8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oyqek")
+text = "Back to main menu"
+
+[connection signal="pressed" from="CanvasLayer/Control/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
+
+[editable path="ForestParallax"]

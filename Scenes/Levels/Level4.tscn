@@ -812,7 +812,7 @@ tile_set = SubResource("TileSet_xvio3")
 
 [node name="ExitDoor" parent="." instance=ExtResource("3_bfawm")]
 position = Vector2(12280, 100)
-next_level = "res://Scenes/Levels/Level4.tscn"
+next_level = "res://Scenes/WinScreen/win_screen.tscn"
 
 [node name="Coins" type="Node2D" parent="."]
 
@@ -1202,6 +1202,9 @@ position = Vector2(11440, -772)
 [node name="Saw" parent="Saws" instance=ExtResource("5_7f72b")]
 position = Vector2(11549, -1040)
 
+[node name="Area2D" parent="Saws/Saw" index="0"]
+move_speed = 130.0
+
 [node name="PointB" parent="Saws/Saw" index="2"]
 position = Vector2(-498, 0)
 
@@ -1216,15 +1219,6 @@ position = Vector2(-497, -1)
 
 [node name="PointB" parent="Saws/Saw2" index="2"]
 position = Vector2(-1, -1)
-
-[node name="Saw3" parent="Saws" instance=ExtResource("5_7f72b")]
-position = Vector2(11549, -621)
-
-[node name="Area2D" parent="Saws/Saw3" index="0"]
-move_speed = 110.0
-
-[node name="PointB" parent="Saws/Saw3" index="2"]
-position = Vector2(-498, 0)
 
 [node name="Saw4" parent="Saws" instance=ExtResource("5_7f72b")]
 position = Vector2(6124, -867)
@@ -1298,16 +1292,8 @@ rotation = 3.1415927
 position = Vector2(6808, -288)
 rotation = 3.1415927
 
-[node name="Turret5" parent="Turrets" instance=ExtResource("6_613b2")]
-position = Vector2(8292, -292)
-rotation = 3.1415927
-
 [node name="Turret6" parent="Turrets" instance=ExtResource("6_613b2")]
 position = Vector2(8968, 92)
-rotation = 3.1415927
-
-[node name="Turret7" parent="Turrets" instance=ExtResource("6_613b2")]
-position = Vector2(8840, -676)
 rotation = 3.1415927
 
 [node name="Turret8" parent="Turrets" instance=ExtResource("6_613b2")]
@@ -1390,7 +1376,6 @@ position = Vector2(0, 27)
 
 [editable path="Saws/Saw"]
 [editable path="Saws/Saw2"]
-[editable path="Saws/Saw3"]
 [editable path="Saws/Saw4"]
 [editable path="Saws/Saw5"]
 [editable path="Saws/Saw6"]

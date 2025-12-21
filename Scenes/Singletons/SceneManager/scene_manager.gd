@@ -19,6 +19,11 @@ func load_scene(next_scene: String = ""):
 	%ColorRect.pivot_offset.y = 0
 	reset_tween()
 	tween.tween_property(%ColorRect, "rotation_degrees", 95, 0.6)
+	
+	await get_tree().scene_changed # Absolutely disgusting
+	if get_tree().current_scene.name == "Tutorial":
+		Hud.start_level_timer()
+		Hud.reset_coins(true)
 
 func reset_tween():
 	tween = create_tween().set_ignore_time_scale()
