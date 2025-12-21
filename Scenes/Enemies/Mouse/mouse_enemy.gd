@@ -34,7 +34,12 @@ func reset_tween():
 
 
 func _on_floor_check_area_body_exited(body: Node2D) -> void:
-	if body is TileMapLayer:
+	# HUHH??
+	if not $TurnCooldown.is_inside_tree() or is_queued_for_deletion():
+		return
+	
+	if body is TileMapLayer and $TurnCooldown.is_stopped():
+		$TurnCooldown.start()
 		scale.x *= -1
 		speed *= -1
 
