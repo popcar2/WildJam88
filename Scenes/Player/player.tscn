@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c4s3fycysvqsi"]
+[gd_scene load_steps=24 format=3 uid="uid://c4s3fycysvqsi"]
 
 [ext_resource type="Script" uid="uid://b1vgic4qg8xy7" path="res://Scenes/Player/player.gd" id="1_6t5aa"]
 [ext_resource type="Script" uid="uid://dyiqd8bnrrpd8" path="res://addons/state_bot/state_bot.gd" id="1_v0iea"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://diwuetymi1gdv" path="res://Scenes/Player/States/player_dash.gd" id="10_jhyir"]
 [ext_resource type="Script" uid="uid://8qn6cvcnbpck" path="res://Scenes/Player/States/player_bounce.gd" id="11_74mp2"]
 [ext_resource type="AudioStream" uid="uid://bpodiwbr4pflw" path="res://Scenes/Player/Sfx/jump.mp3" id="14_7g0yx"]
+[ext_resource type="AudioStream" uid="uid://cassxmh3ghtdj" path="res://Scenes/Player/Sfx/bounce.mp3" id="14_hnuln"]
 [ext_resource type="AudioStream" uid="uid://x25ga55xss0l" path="res://Scenes/Player/Sfx/dmg1.mp3" id="15_r5xpd"]
 [ext_resource type="AudioStream" uid="uid://dojksvmv6unxp" path="res://Scenes/Player/Sfx/dmg2.mp3" id="16_ks1b7"]
 [ext_resource type="AudioStream" uid="uid://c6f75s4esialf" path="res://Scenes/Player/Sfx/deathsound1.mp3" id="17_ks1b7"]
@@ -99,7 +100,6 @@ collision_layer = 2
 floor_stop_on_slope = false
 floor_snap_length = 5.0
 script = ExtResource("1_6t5aa")
-hp = 1
 
 [node name="SpriteOffset" type="CanvasGroup" parent="."]
 scale = Vector2(0.45, 0.45)
@@ -171,7 +171,12 @@ volume_db = 10.0
 
 [node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("17_ks1b7")
-volume_db = 10.0
+volume_db = 5.0
+
+[node name="BounceSFX" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("14_hnuln")
+volume_db = 5.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.6, 0.6)

@@ -83,5 +83,6 @@ position = Vector2(576, -42)
 amount = 100
 texture = SubResource("GradientTexture2D_4pa2y")
 lifetime = 25.0
-fixed_fps = 5
+preprocess = 20.0
+fixed_fps = 2
 process_material = SubResource("ParticleProcessMaterial_erpw3")

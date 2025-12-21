@@ -9,6 +9,7 @@ func load_scene(next_scene: String = ""):
 	await tween.tween_property(%ColorRect, "rotation_degrees", 0, 0.6).finished
 	
 	if next_scene:
+		Hud.save_coins()
 		get_tree().change_scene_to_file(next_scene)
 	else:
 		get_tree().reload_current_scene()

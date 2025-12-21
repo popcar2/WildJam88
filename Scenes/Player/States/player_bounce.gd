@@ -13,6 +13,8 @@ func _enter_state(last_state: SimpleState) -> void:
 	var previous_velocity: float = last_state.biggest_velocity - 100
 	player.play_jump_animation()
 	$BounceCooldown.start()
+	%BounceSFX.pitch_scale = randf_range(0.90, 1)
+	%BounceSFX.play()
 	
 	if player.finished_initial_bounce == false:
 		player.finished_initial_bounce = true
@@ -24,7 +26,7 @@ func _enter_state(last_state: SimpleState) -> void:
 		#	print(bonus_velocity)
 		#	player.velocity.y = clampf(bonus_velocity, max_bounce_height, 0)
 	else:
-		player.velocity.y = clampf(-previous_velocity * 0.85, max_bounce_height, 0)
+		player.velocity.y = clampf(-previous_velocity * 0.85, max_bounce_height / 2, 0)
 	
 	#print(previous_velocity, "\t", player.velocity.y)
 	tween = create_tween()

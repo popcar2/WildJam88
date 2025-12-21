@@ -1,7 +1,8 @@
 extends CanvasLayer
 
-var coins := 0
-var hearts := 3
+var coins: int = 0
+var coins_at_scene_start: int = 0
+var hearts: int = 3
 
 @export var full_heart: Texture2D
 @export var empty_heart: Texture2D
@@ -16,9 +17,17 @@ func add_coin(amount := 1):
 	coins += amount
 	%CoinLabel.text = str(coins) + "x"
 
-func reset_coins():
-	coins = 0
+## Resets coins to what it was at the start of the scene
+## If full reset, sets it to 0
+func reset_coins(full_reset: float = false):
+	if full_reset:
+		coins = 0
+	else:
+		coins = coins_at_scene_start
 	%CoinLabel.text = str(coins) + "x"
+
+func save_coins():
+	coins_at_scene_start = coins
 
 func set_hearts(current_hp: int) -> void:
 	hearts = clamp(current_hp, 0, heart_nodes.size())
