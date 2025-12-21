@@ -836,7 +836,7 @@ font_size = 28
 font_size = 64
 font_color = Color(0.90588236, 0.19607843, 0.27450982, 1)
 
-[node name="Level1" type="Node2D"]
+[node name="Tutorial" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-3754.0]
 
 [node name="SnowParallax" parent="." instance=ExtResource("11_356um")]
