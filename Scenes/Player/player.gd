@@ -72,12 +72,18 @@ func take_damage(source: Node2D = null) -> void:
 	
 	if hp <= 0:
 		die()
+	else:
+		if randi_range(0, 1) == 0:
+			$DmgSFX1.play()
+		else:
+			$DmgSFX2.play()
 
 func die():
 	if is_dead:
 		return
 	
 	is_dead = true
+	$DeathSFX.play()
 	
 	var death_tween: Tween = create_tween()
 	death_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC).set_parallel()

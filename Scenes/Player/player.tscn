@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c4s3fycysvqsi"]
+[gd_scene load_steps=23 format=3 uid="uid://c4s3fycysvqsi"]
 
 [ext_resource type="Script" uid="uid://b1vgic4qg8xy7" path="res://Scenes/Player/player.gd" id="1_6t5aa"]
 [ext_resource type="Script" uid="uid://dyiqd8bnrrpd8" path="res://addons/state_bot/state_bot.gd" id="1_v0iea"]
@@ -14,6 +14,9 @@
 [ext_resource type="Script" uid="uid://diwuetymi1gdv" path="res://Scenes/Player/States/player_dash.gd" id="10_jhyir"]
 [ext_resource type="Script" uid="uid://8qn6cvcnbpck" path="res://Scenes/Player/States/player_bounce.gd" id="11_74mp2"]
 [ext_resource type="AudioStream" uid="uid://bpodiwbr4pflw" path="res://Scenes/Player/Sfx/jump.mp3" id="14_7g0yx"]
+[ext_resource type="AudioStream" uid="uid://x25ga55xss0l" path="res://Scenes/Player/Sfx/dmg1.mp3" id="15_r5xpd"]
+[ext_resource type="AudioStream" uid="uid://dojksvmv6unxp" path="res://Scenes/Player/Sfx/dmg2.mp3" id="16_ks1b7"]
+[ext_resource type="AudioStream" uid="uid://c6f75s4esialf" path="res://Scenes/Player/Sfx/deathsound1.mp3" id="17_ks1b7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f60y1"]
 animations = [{
@@ -157,6 +160,18 @@ wait_time = 2.0
 [node name="JumpSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_7g0yx")
 volume_db = -10.0
+
+[node name="DmgSFX1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_r5xpd")
+volume_db = 10.0
+
+[node name="DmgSFX2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_ks1b7")
+volume_db = 10.0
+
+[node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_ks1b7")
+volume_db = 10.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.6, 0.6)
