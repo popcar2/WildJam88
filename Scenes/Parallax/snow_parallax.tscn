@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkthptyxb2huy"]
+
+[ext_resource type="Texture2D" uid="uid://d3vtlk2cd6plw" path="res://Assets/Backgrounds/shadow_layer_snow.png" id="1_8rn5e"]
+[ext_resource type="Texture2D" uid="uid://s5b13q0sv8ba" path="res://Assets/Backgrounds/middle_layer_snow.png" id="2_ia34m"]
+[ext_resource type="Texture2D" uid="uid://bh7ctw55uiq1g" path="res://Assets/Backgrounds/outer_layer_snow.png" id="3_erpw3"]
+
+[sub_resource type="Gradient" id="Gradient_erpw3"]
+offsets = PackedFloat32Array(0, 0.6369863, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4pa2y"]
+gradient = SubResource("Gradient_erpw3")
+width = 12
+height = 12
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.6991453, 0.8153846)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_erpw3"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(576, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 10.0
+initial_velocity_min = 40.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, 0, 0)
+
+[node name="SnowParallax" type="Node2D"]
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+modulate = Color(0.65834004, 0.6583399, 0.6583399, 1)
+scroll_scale = Vector2(0.05, 0)
+scroll_offset = Vector2(0, 300)
+repeat_size = Vector2(2973, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_8rn5e")
+
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+modulate = Color(0.82606, 0.82606006, 0.82606, 1)
+scroll_scale = Vector2(0.15, 0)
+scroll_offset = Vector2(0, 280)
+repeat_size = Vector2(3694.5, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_ia34m")
+
+[node name="Parallax2D3" type="Parallax2D" parent="."]
+modulate = Color(0.8879926, 0.88799256, 0.8879925, 1)
+scroll_scale = Vector2(0.15, 0)
+scroll_offset = Vector2(0, 866)
+repeat_size = Vector2(3768, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D3"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_erpw3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="CanvasLayer"]
+position = Vector2(576, -42)
+amount = 100
+texture = SubResource("GradientTexture2D_4pa2y")
+lifetime = 25.0
+fixed_fps = 5
+process_material = SubResource("ParticleProcessMaterial_erpw3")

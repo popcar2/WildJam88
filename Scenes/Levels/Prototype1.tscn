@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://chsmgm2u2ty81"]
+[gd_scene load_steps=6 format=4 uid="uid://chsmgm2u2ty81"]
 
 [ext_resource type="Texture2D" uid="uid://dfwb7ar5k7cwe" path="res://Assets/Kenny's Platformer Assets/Spritesheets/spritesheet-tiles-default.png" id="1_o85ia"]
 [ext_resource type="PackedScene" uid="uid://c4s3fycysvqsi" path="res://Scenes/Player/player.tscn" id="2_20sfd"]
+[ext_resource type="PackedScene" uid="uid://cjjc0vmsnkjux" path="res://Scenes/Enemies/Mouse/mouse_enemy.tscn" id="3_p6gjl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p6gjl"]
 texture = ExtResource("1_o85ia")
@@ -581,3 +582,6 @@ tile_set = SubResource("TileSet_l2ysa")
 
 [node name="Player" parent="." instance=ExtResource("2_20sfd")]
 position = Vector2(7, -73)
+
+[node name="Mouse" parent="." instance=ExtResource("3_p6gjl")]
+position = Vector2(-409, 1)

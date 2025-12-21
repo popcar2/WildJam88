@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://belwxjhsdk1im"]
+[gd_scene load_steps=24 format=4 uid="uid://belwxjhsdk1im"]
 
 [ext_resource type="PackedScene" uid="uid://27xq5u6wiy6i" path="res://Scenes/Parallax/forest_parallax.tscn" id="1_65xyd"]
 [ext_resource type="Texture2D" uid="uid://betxptcohekqj" path="res://Assets/Kenny's Platformer Assets/Spritesheets/spritesheet-tiles-double.png" id="1_fucd8"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bq4nkd1tjh1ku" path="res://Assets/Kenny's Platformer Assets/Singular Images/Keys/keyboard_arrows_up.svg" id="5_65xyd"]
 [ext_resource type="Texture2D" uid="uid://dxbxyaoolri6d" path="res://Assets/Kenny's Platformer Assets/Singular Images/Keys/keyboard_x.svg" id="5_l14b5"]
 [ext_resource type="Texture2D" uid="uid://c58xat3beu4y1" path="res://Assets/Kenny's Platformer Assets/Singular Images/Keys/keyboard_arrows_down.svg" id="6_obqwn"]
+[ext_resource type="PackedScene" uid="uid://bkthptyxb2huy" path="res://Scenes/Parallax/snow_parallax.tscn" id="11_356um"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_riv1q"]
 texture = ExtResource("1_fucd8")
@@ -837,7 +838,10 @@ font_color = Color(0.90588236, 0.19607843, 0.27450982, 1)
 [node name="Level1" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-3754.0]
 
+[node name="SnowParallax" parent="." instance=ExtResource("11_356um")]
+
 [node name="ForestParallax" parent="." instance=ExtResource("1_65xyd")]
+visible = false
 
 [node name="HazardLayer" type="TileMapLayer" parent="." groups=["hazards"]]
 scale = Vector2(0.75, 0.75)
@@ -1109,21 +1113,21 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="BounceTutorial5" type="Panel" parent="."]
+[node name="BounceTutorial7" type="Panel" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 4608.0
-offset_top = -992.0
-offset_right = 5009.0
-offset_bottom = -800.0
+offset_left = 7264.0
+offset_top = -1504.0
+offset_right = 7665.0
+offset_bottom = -1312.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_u3mja")
 
-[node name="Label" type="Label" parent="BounceTutorial5"]
+[node name="Label" type="Label" parent="BounceTutorial7"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1132,7 +1136,7 @@ offset_left = 32.0
 offset_right = -17.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Bouncing twice in a row reduces your bounce height..."
+text = "Bouncing twice in a row reduces your bounce height"
 label_settings = SubResource("LabelSettings_l14b5")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1144,9 +1148,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 5152.0
+offset_left = 4768.0
 offset_top = -992.0
-offset_right = 5760.0
+offset_right = 5376.0
 offset_bottom = -800.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -1162,6 +1166,37 @@ offset_right = -17.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Bouncing also increases your horizontal momentum, so bounce often to go fast!"
+label_settings = SubResource("LabelSettings_l14b5")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="BounceTutorial5" type="Panel" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 6048.0
+offset_top = -992.0
+offset_right = 6336.0
+offset_bottom = -800.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_u3mja")
+
+[node name="Label" type="Label" parent="BounceTutorial5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_right = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Higher jump
+=
+Higher bounce"
 label_settings = SubResource("LabelSettings_l14b5")
 horizontal_alignment = 1
 vertical_alignment = 1

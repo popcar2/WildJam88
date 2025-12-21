@@ -4,17 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://k6kp7cbae4ru" path="res://Assets/Backgrounds/middle_layer.png" id="2_f87ja"]
 [ext_resource type="Texture2D" uid="uid://bxbdhnoshkmp5" path="res://Assets/Backgrounds/outer_layer.png" id="3_g1f82"]
 
-[sub_resource type="Gradient" id="Gradient_65xyd"]
+[sub_resource type="Gradient" id="Gradient_1wxyb"]
 colors = PackedColorArray(1, 1, 0.83137256, 1, 0.41960785, 0.7137255, 0.7921569, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_356um"]
-gradient = SubResource("Gradient_65xyd")
+gradient = SubResource("Gradient_1wxyb")
 width = 1228
 
 [node name="ForestParallax" type="Node2D"]
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.05, 0)
+scroll_scale = Vector2(0.05, 0.01)
 scroll_offset = Vector2(0, 300)
 repeat_size = Vector2(3652, 0)
 repeat_times = 3
@@ -29,7 +29,7 @@ texture = ExtResource("1_1wxyb")
 
 [node name="Parallax2D2" type="Parallax2D" parent="."]
 modulate = Color(0.3711189, 0.3711191, 0.37111887, 1)
-scroll_scale = Vector2(0.15, 0)
+scroll_scale = Vector2(0.15, 0.03)
 scroll_offset = Vector2(0, 270)
 repeat_size = Vector2(3150, 0)
 repeat_times = 3
@@ -39,7 +39,7 @@ texture = ExtResource("2_f87ja")
 
 [node name="Parallax2D3" type="Parallax2D" parent="."]
 modulate = Color(0.52906674, 0.52906674, 0.52906656, 1)
-scroll_scale = Vector2(0.3, 0)
+scroll_scale = Vector2(0.3, 0.05)
 scroll_offset = Vector2(0, 300)
 repeat_size = Vector2(3798, 0)
 repeat_times = 3

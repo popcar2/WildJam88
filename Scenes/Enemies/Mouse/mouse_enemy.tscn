@@ -56,4 +56,5 @@ debug_color = Color(0, 0.73946756, 0.23603278, 0.41960785)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="FloorCheckArea" to="." method="_on_floor_check_area_body_exited"]
+[connection signal="body_entered" from="WallCheckArea" to="." method="_on_floor_check_area_body_exited"]
 [connection signal="body_entered" from="BounceArea" to="." method="_on_bounce_area_body_entered"]
