@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dq4v1jmaav2aj"]
+[gd_scene load_steps=3 format=3 uid="uid://dq4v1jmaav2aj"]
 
 [ext_resource type="Script" uid="uid://bn8obxs21p52q" path="res://Scenes/Singletons/SceneManager/scene_manager.gd" id="1_lb76v"]
+[ext_resource type="AudioStream" uid="uid://bmg1kn4arxkh7" path="res://Assets/Music/ost.mp3" id="2_dub5b"]
 
 [node name="SceneManager" type="CanvasLayer"]
 layer = 5
@@ -31,3 +32,9 @@ rotation = -1.5707964
 pivot_offset = Vector2(0, 810)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_dub5b")
+volume_db = -15.0
+autoplay = true
+parameters/looping = true

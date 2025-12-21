@@ -1360,7 +1360,7 @@ position = Vector2(8448, -640)
 position = Vector2(8448, -544)
 
 [node name="Coin33" parent="Coins" instance=ExtResource("3_mviin")]
-position = Vector2(2368, -480)
+position = Vector2(2370, -480)
 
 [node name="Coin34" parent="Coins" instance=ExtResource("3_mviin")]
 position = Vector2(3232, -512)
@@ -1416,4 +1416,3 @@ next_level = "res://Scenes/Levels/Level1.tscn"
 
 [node name="Player" parent="." instance=ExtResource("2_jmmpn")]
 position = Vector2(0, 49)
-hp = 3

@@ -74,7 +74,7 @@ layer = -1
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(0, 648)
 rotation = -1.5707964
-scale = Vector2(1, 1152)
+scale = Vector2(1, 2592)
 texture = SubResource("GradientTexture1D_188t3")
 centered = false
 

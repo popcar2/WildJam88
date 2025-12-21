@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://djmyvxxlpf2jf"]
+[gd_scene load_steps=12 format=4 uid="uid://3vprf24ytkes"]
 
 [ext_resource type="PackedScene" uid="uid://27xq5u6wiy6i" path="res://Scenes/Parallax/forest_parallax.tscn" id="1_4rk67"]
 [ext_resource type="Texture2D" uid="uid://betxptcohekqj" path="res://Assets/Kenny's Platformer Assets/Spritesheets/spritesheet-tiles-double.png" id="2_f8qf7"]
@@ -787,7 +787,7 @@ metadata/_edit_horizontal_guides_ = [-3754.0]
 
 [node name="HazardLayer" type="TileMapLayer" parent="." groups=["hazards"]]
 scale = Vector2(0.75, 0.75)
-tile_map_data = PackedByteArray("AAAfAP7/AAAAAAcAAAAhAP7/AAAAAAcAAAAUAPn/AAAAAAcAAAA=")
+tile_map_data = PackedByteArray("AAAhAP7/AAAAAAcAAAAUAPn/AAAAAAcAAAA=")
 tile_set = SubResource("TileSet_36ke7")
 script = SubResource("GDScript_riv1q")
 
@@ -802,22 +802,22 @@ position = Vector2(6808, -1240)
 [node name="Coins" type="Node2D" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource("4_d1swa")]
-position = Vector2(3119, -467)
+position = Vector2(3088, -467)
 
 [node name="Coin2" parent="Coins" instance=ExtResource("4_d1swa")]
-position = Vector2(3119, -371)
+position = Vector2(3088, -371)
 
 [node name="Coin3" parent="Coins" instance=ExtResource("4_d1swa")]
-position = Vector2(3119, -275)
+position = Vector2(3088, -275)
 
 [node name="Coin4" parent="Coins" instance=ExtResource("4_d1swa")]
-position = Vector2(3119, -179)
+position = Vector2(3088, -179)
 
 [node name="Coin5" parent="Coins" instance=ExtResource("4_d1swa")]
-position = Vector2(3118, -664)
+position = Vector2(3088, -664)
 
 [node name="Coin6" parent="Coins" instance=ExtResource("4_d1swa")]
-position = Vector2(3118, -568)
+position = Vector2(3088, -568)
 
 [node name="Coin7" parent="Coins" instance=ExtResource("4_d1swa")]
 position = Vector2(2314, -436)
@@ -886,7 +886,6 @@ position = Vector2(-273, 0)
 
 [node name="Player" parent="." instance=ExtResource("6_ao4h1")]
 position = Vector2(0, 27)
-hp = 3
 
 [editable path="Saws/Saw"]
 [editable path="Saws/Saw2"]
