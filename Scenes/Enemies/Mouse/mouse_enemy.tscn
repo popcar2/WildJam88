@@ -39,7 +39,7 @@ shape = SubResource("RectangleShape2D_igwbl")
 debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="WallCheckArea" type="Area2D" parent="."]
-position = Vector2(41, -34)
+position = Vector2(41, -24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallCheckArea"]
 position = Vector2(5, 0)

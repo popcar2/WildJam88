@@ -14,6 +14,8 @@ func toggle_pause() -> void:
 		get_tree().paused = true
 	
 	visible = not visible
+	if visible:
+		%ResumeButton.grab_focus()
 
 
 func _on_sfx_slider_value_changed(value: float) -> void:
