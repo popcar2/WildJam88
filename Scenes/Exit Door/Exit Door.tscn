@@ -7,6 +7,7 @@
 size = Vector2(118, 127.5)
 
 [node name="ExitDoor" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_5nwc5")
 
 [node name="Door Sprite" type="Sprite2D" parent="."]
@@ -18,8 +19,4 @@ texture = ExtResource("2_5nwc5")
 position = Vector2(0, -64.25)
 shape = SubResource("RectangleShape2D_5nwc5")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

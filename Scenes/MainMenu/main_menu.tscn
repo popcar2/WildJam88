@@ -82,7 +82,7 @@ offset_top = 101.0
 offset_right = 257.5
 offset_bottom = 189.0
 grow_horizontal = 2
-text = "RACCOON GAME"
+text = "RACCOON TRAILS"
 label_settings = SubResource("LabelSettings_r0mel")
 horizontal_alignment = 1
 

@@ -71,3 +71,11 @@ texture = SubResource("GradientTexture2D_4pa2y")
 lifetime = 25.0
 fixed_fps = 5
 process_material = SubResource("ParticleProcessMaterial_erpw3")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15785998, 0.26561904, 0.3874738, 1)
