@@ -2,6 +2,7 @@ extends Area2D
 
 @export var speed: float = 400
 var tween: Tween
+var death_particles_scn: PackedScene = preload("uid://drdgw0dqkgy61")
 
 func _ready() -> void:
 	play_walk_animation()
@@ -42,4 +43,7 @@ func _on_bounce_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		if body.get_state() == "Dash":
 			body.set_state("Bounce")
+			var death_particles: GPUParticles2D = death_particles_scn.instantiate()
+			death_particles.global_position = global_position
+			add_sibling(death_particles)
 			queue_free()
