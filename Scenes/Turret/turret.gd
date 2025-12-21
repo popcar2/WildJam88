@@ -3,6 +3,8 @@ extends Node2D
 var player_target : Player
 var projectile_scene = preload("uid://1nyvrrqbu24v")
 
+@export var rotation_offset_degrees := 0.0
+
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var turret_head: Sprite2D = $"Turret Head"
 @onready var projectile_spawn: Node2D = %"Projectile Spawn Location"
@@ -14,7 +16,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if player_target:
-		turret_head.look_at(player_target.position)
+		turret_head.look_at(player_target.global_position)
+		turret_head.rotation_degrees += rotation_offset_degrees
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -40,7 +43,8 @@ func _shoot() -> void:
 	var projectile = projectile_scene.instantiate()
 	get_tree().current_scene.add_child(projectile)
 	projectile.global_position = projectile_spawn.global_position
-	projectile.rotation_degrees = turret_head.rotation_degrees
+	projectile.global_rotation = turret_head.global_rotation
+
 
 
 func _on_cooldown_timer_timeout() -> void:
