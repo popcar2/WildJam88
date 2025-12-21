@@ -14,3 +14,15 @@ func toggle_pause() -> void:
 		get_tree().paused = true
 	
 	visible = not visible
+
+
+func _on_sfx_slider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(value))
+
+
+func _on_music_slider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(value))
+
+
+func _on_resume_button_pressed() -> void:
+	toggle_pause()

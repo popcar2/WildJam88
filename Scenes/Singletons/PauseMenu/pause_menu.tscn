@@ -1,9 +1,72 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdrlsf6xqpthr"]
+[gd_scene load_steps=9 format=3 uid="uid://bdrlsf6xqpthr"]
 
 [ext_resource type="Script" uid="uid://dpqpjwoej5o3n" path="res://Scenes/Singletons/PauseMenu/pause_menu.gd" id="1_gbkv2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pk4vc"]
 font_size = 80
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbkv2"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(2.0214916e-06, 0.71081054, 0.34887776, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2hbkp"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0.50237113, 0.23943958, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gk4rt"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0.889898, 0.44415665, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_gbkv2"]
+font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gsctr"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.03529412, 0.4627451, 0.24313726, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_umiai"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.08212603, 0.91779125, 0.50146145, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -41,18 +104,79 @@ label_settings = SubResource("LabelSettings_pk4vc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="Control/TextureRect"]
+[node name="ResumeButton" type="Button" parent="Control/TextureRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -97.0
-offset_top = 103.0
-offset_right = 97.0
-offset_bottom = 178.0
+offset_left = -120.0
+offset_top = 113.0
+offset_right = 120.0
+offset_bottom = 193.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_gbkv2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2hbkp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gk4rt")
 text = "Resume"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.5
+offset_top = -47.0
+offset_right = 228.5
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/TextureRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SFX Volume"
+label_settings = SubResource("LabelSettings_gbkv2")
+horizontal_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="Control/TextureRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_styles/slider = SubResource("StyleBoxFlat_gsctr")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_umiai")
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/TextureRect/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Music Volume"
+label_settings = SubResource("LabelSettings_gbkv2")
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="Control/TextureRect/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_styles/slider = SubResource("StyleBoxFlat_gsctr")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_umiai")
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[connection signal="pressed" from="Control/TextureRect/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="value_changed" from="Control/TextureRect/VBoxContainer/HBoxContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="Control/TextureRect/VBoxContainer/HBoxContainer2/MusicSlider" to="." method="_on_music_slider_value_changed"]
