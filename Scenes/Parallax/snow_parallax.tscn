@@ -1,8 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkthptyxb2huy"]
+[gd_scene load_steps=9 format=3 uid="uid://bkthptyxb2huy"]
 
 [ext_resource type="Texture2D" uid="uid://d3vtlk2cd6plw" path="res://Assets/Backgrounds/shadow_layer_snow.png" id="1_8rn5e"]
 [ext_resource type="Texture2D" uid="uid://s5b13q0sv8ba" path="res://Assets/Backgrounds/middle_layer_snow.png" id="2_ia34m"]
 [ext_resource type="Texture2D" uid="uid://bh7ctw55uiq1g" path="res://Assets/Backgrounds/outer_layer_snow.png" id="3_erpw3"]
+
+[sub_resource type="Gradient" id="Gradient_4pa2y"]
+colors = PackedColorArray(0.81240565, 0.8124055, 0.8124055, 1, 0.19957286, 0.53511244, 0.7460092, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_188t3"]
+gradient = SubResource("Gradient_4pa2y")
+width = 648
 
 [sub_resource type="Gradient" id="Gradient_erpw3"]
 offsets = PackedFloat32Array(0, 0.6369863, 1)
@@ -53,7 +60,7 @@ texture = ExtResource("2_ia34m")
 [node name="Parallax2D3" type="Parallax2D" parent="."]
 modulate = Color(0.8879926, 0.88799256, 0.8879925, 1)
 scroll_scale = Vector2(0.15, 0)
-scroll_offset = Vector2(0, 866)
+scroll_offset = Vector2(0, 800)
 repeat_size = Vector2(3768, 0)
 repeat_times = 3
 
@@ -64,6 +71,13 @@ texture = ExtResource("3_erpw3")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(0, 648)
+rotation = -1.5707964
+scale = Vector2(1, 1152)
+texture = SubResource("GradientTexture1D_188t3")
+centered = false
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="CanvasLayer"]
 position = Vector2(576, -42)
 amount = 100
@@ -71,11 +85,3 @@ texture = SubResource("GradientTexture2D_4pa2y")
 lifetime = 25.0
 fixed_fps = 5
 process_material = SubResource("ParticleProcessMaterial_erpw3")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.15785998, 0.26561904, 0.3874738, 1)
