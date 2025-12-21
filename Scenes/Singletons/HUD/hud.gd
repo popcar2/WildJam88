@@ -3,6 +3,8 @@ extends CanvasLayer
 var coins: int = 0
 var coins_at_scene_start: int = 0
 var hearts: int = 3
+var level_time: float = 0.0
+var level_running: bool = false
 
 @export var full_heart: Texture2D
 @export var empty_heart: Texture2D
@@ -12,6 +14,30 @@ var hearts: int = 3
 	%Heart2,
 	%Heart3,
 ]
+
+@onready var timer_Label = %TimerLabel
+
+func _ready() -> void:
+	_start_level_timer()
+
+func _process(delta: float) -> void:
+	if level_running:
+		level_time += delta
+		_update_timer_label()
+
+func _start_level_timer() -> void:
+	level_time = 0.0
+	level_running = true
+	_update_timer_label()
+
+func stop_level_timer() -> void:
+	level_running = false
+
+func _update_timer_label() -> void:
+	var total_seconds: int = int(level_time)
+	var minutes: int = total_seconds / 60
+	var seconds: int = total_seconds % 60
+	timer_Label.text = "%02d:%02d" % [minutes, seconds]
 
 func add_coin(amount := 1):
 	coins += amount
