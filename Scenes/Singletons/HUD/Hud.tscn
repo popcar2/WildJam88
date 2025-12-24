@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cusq8g8vw54o5"]
+[gd_scene load_steps=8 format=3 uid="uid://cusq8g8vw54o5"]
 
 [ext_resource type="Script" uid="uid://dslxc0vdw7irn" path="res://Scenes/Singletons/HUD/hud.gd" id="1_8e72q"]
 [ext_resource type="Texture2D" uid="uid://cy3rmut2frhw6" path="res://Assets/Kenny's Platformer Assets/Singular Images/hud_coin.png" id="2_8e72q"]
 [ext_resource type="Texture2D" uid="uid://bmgk4eii5b0qf" path="res://Assets/Kenny's Platformer Assets/Singular Images/hud_heart_empty.png" id="3_d2gho"]
 [ext_resource type="Texture2D" uid="uid://bd47nn6j6v2j3" path="res://Assets/Kenny's Platformer Assets/Singular Images/hud_heart.png" id="3_ikshg"]
+[ext_resource type="Script" uid="uid://l1ig13ernybj" path="res://Scenes/Singletons/HUD/mobile_controls.gd" id="5_6oqya"]
+[ext_resource type="Texture2D" uid="uid://cw26g82c5lpqf" path="res://icon.svg" id="6_m4pja"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2gho"]
 content_margin_left = 0.0
@@ -11,7 +13,8 @@ content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
-corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 corner_detail = 5
 
 [node name="CanvasLayer" type="CanvasLayer"]
@@ -83,12 +86,13 @@ expand_mode = 2
 [node name="Panel" type="Panel" parent="Control"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -63.0
-offset_right = 206.5
-grow_vertical = 0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -103.25
+offset_right = 103.25
+offset_bottom = 50.0
+grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_d2gho")
 
 [node name="TimerLabel" type="Label" parent="Control/Panel"]
@@ -109,3 +113,77 @@ theme_override_font_sizes/font_size = 32
 text = "Time: 00:00"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MobileControls" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -232.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("5_6oqya")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MobileControls"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 110.0
+offset_top = -64.0
+offset_right = 450.0
+offset_bottom = 64.0
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="MoveLeft" type="Control" parent="MobileControls/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="MobileControls/HBoxContainer/MoveLeft"]
+self_modulate = Color(1, 1, 1, 0.5686275)
+texture_normal = ExtResource("6_m4pja")
+action = "move_left"
+
+[node name="MoveRight" type="Control" parent="MobileControls/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="MobileControls/HBoxContainer/MoveRight"]
+self_modulate = Color(1, 1, 1, 0.5686275)
+texture_normal = ExtResource("6_m4pja")
+action = "move_right"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MobileControls"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -425.0
+offset_top = -64.0
+offset_right = -85.0
+offset_bottom = 64.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="MoveLeft" type="Control" parent="MobileControls/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="MobileControls/HBoxContainer2/MoveLeft"]
+self_modulate = Color(1, 1, 1, 0.5686275)
+texture_normal = ExtResource("6_m4pja")
+action = "dash"
+
+[node name="MoveRight" type="Control" parent="MobileControls/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="MobileControls/HBoxContainer2/MoveRight"]
+self_modulate = Color(1, 1, 1, 0.5686275)
+texture_normal = ExtResource("6_m4pja")
+action = "jump"
